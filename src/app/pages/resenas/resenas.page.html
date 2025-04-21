@@ -1,13 +1,39 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>resenas</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content class="ion-padding" fullscreen>
+  <div class="reseñas-container">
+    <h2 class="titulo-principal">Últimas Reseñas</h2>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">resenas</ion-title>
-    </ion-toolbar>
-  </ion-header>
+    <div class="tarjeta-reseña" *ngFor="let resena of resenas">
+      <div class="tarjeta-header">
+        <div class="poster-placeholder">{{ resena.tituloCorto }}</div>
+        <div class="info-pelicula">
+          <h3 class="titulo-pelicula">{{ resena.titulo }}</h3>
+          <p class="genero-tiempo">{{ resena.genero }} · {{ resena.duracion }} min</p>
+        </div>
+        <div class="puntuacion">
+          <span class="estrellas">{{ resena.estrellas }}</span>
+          <span class="valor">{{ resena.puntuacion }}/5</span>
+        </div>
+      </div>
+
+      <p class="descripcion">{{ resena.descripcion }}</p>
+
+      <div class="etiquetas">
+        <span class="chip" *ngFor="let etiqueta of resena.etiquetas">{{ etiqueta }}</span>
+      </div>
+
+      <div class="acciones">
+        <span class="accion">
+          <ion-icon name="thumbs-up-outline"></ion-icon> ME GUSTA ({{ resena.likes }})
+        </span>
+        <span class="accion">
+          <ion-icon name="chatbubble-outline"></ion-icon> COMENTAR ({{ resena.comentarios }})
+        </span>
+      </div>
+
+      <div class="autor">
+        <div class="avatar">{{ resena.autorIniciales }}</div>
+        <div class="detalle-autor">Por {{ resena.autor }} - {{ resena.fecha }}</div>
+      </div>
+    </div>
+  </div>
 </ion-content>
