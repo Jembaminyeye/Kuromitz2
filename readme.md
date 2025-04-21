@@ -91,7 +91,7 @@ La aplicación es una plataforma de recomendación de películas y series desarr
 
 # Prototipo de diseño
 
-[Figma - Prototipo Kuromtz] ( https://www.figma.com/design/y2yN6VCd7flSzcSV7a1zcA/Dise%C3%B1oPrototipo?node-id=72-2484&t=s6PICz4Nu0cg8Hgo-1 )
+[Figma - Prototipo Kuromtz](https://www.figma.com/design/y2yN6VCd7flSzcSV7a1zcA/Dise%C3%B1oPrototipo?node-id=72-2484&t=s6PICz4Nu0cg8Hgo-1)
 
 
 # Navegación y ux
@@ -123,7 +123,7 @@ Flujo de autenticación (ambos roles):
 6. Desde el perfil, puede cerrar sesión o cambiar de dispositivo sin perder su información.
 
 ## Estructura de navegacion
-### Diagrama de navegacion en carpeta " otros " 
+### Diagrama de navegacion en carpeta [" otros "](https://github.com/Jembaminyeye/Kuromitz2/tree/master/otros)  
 en el diagrama tenemos un inicio de sesión que lleva a registro o directamente a home. Desde home, el usuario puede acceder a todas las pantallas principales: buscar, ver detalles, listas y perfil. Si el usuario es administrador, también puede navegar a Admin Dashboard (línea punteada anaranjada), donde está dividido en dos clústeres: usuario y administrador.
 
 # Librerías del proyecto
