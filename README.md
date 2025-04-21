@@ -10,3 +10,4 @@ Benjamin Rodriguez, Ignacio Layana, Javier Morales, Sebastián rojas y Sean Jame
 ### 2. Ejecutar el terminal posicionandote en la carpet "Kuromitz2"
 ### 3. Ejecutar comando "ionic serve"
 
+### Más informacion sobre el proyecto en [ readme.md ]
