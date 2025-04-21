@@ -8,19 +8,15 @@
 
 
 #  Índice
-1. Resumen del Proyecto
-2. Requerimientos
-3. Diseño de prototipo
-4. Navegación y UX
-5. Librerías  
-[Diseño de prototipos](#prototipo-de-diseño)
+1. [Resumen del Proyecto](#resumen-del-proyecto)
+2. [Requerimientos](#requerimientos)
+3. [Diseño de prototipos](#prototipo-de-diseño)
+4. [Navegación y UX](#navegación-y-ux)
+5. [Librerías del proyecto](#librerías-del-proyecto)  
 
 # Resumen del Proyecto
 
-
 La aplicación es una plataforma de recomendación de películas y series desarrollada con Ionic + Angular. Está diseñada para ofrecer a los usuarios una experiencia personalizada, permitiéndoles buscar, calificar, comentar y gestionar listas de contenido audiovisual. Además, incluye un sistema de administración para gestionar el contenido y moderar los comentarios.
-
-
 
 
 # Requerimientos
@@ -131,5 +127,4 @@ En el diagrama tenemos un inicio de sesión que lleva a registro o directamente 
 * Angular
 * TypeScript
 
-## Prototipo de diseño 
 
