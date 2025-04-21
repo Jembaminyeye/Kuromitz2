@@ -1,4 +1,4 @@
-# Kuromtz, Aplicación recomendadora de películas y series.
+# Kuromitz, Aplicación recomendadora de películas y series.
 ## Presentado por:
 Benjamin Rodriguez, Ignacio Layana, Javier Morales, Sebastián rojas y Sean Jamen
 
