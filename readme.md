@@ -123,7 +123,8 @@ Flujo de autenticación (ambos roles):
 6. Desde el perfil, puede cerrar sesión o cambiar de dispositivo sin perder su información.
 
 ## Estructura de navegacion
-### Diagrama 
+### Diagrama de navegacion en carpeta " otros " 
+en el diagrama tenemos un inicio de sesión que lleva a registro o directamente a home. Desde home, el usuario puede acceder a todas las pantallas principales: buscar, ver detalles, listas y perfil. Si el usuario es administrador, también puede navegar a Admin Dashboard (línea punteada anaranjada), donde está dividido en dos clústeres: usuario y administrador.
 
 # Librerías del proyecto
 * Ionic Framework
