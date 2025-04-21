@@ -7,7 +7,7 @@ Benjamin Rodriguez, Ignacio Layana, Javier Morales, Sebastián rojas y Sean Jame
 
 
 # Ejecutar proyecto
-### 1. Descargar el zip del proyecto
+### 1. Descargar el zip del proyecto y extraer los archivos
 ### 2. Ejecutar el terminal posicionandote en la carpet "Kuromitz2"
 ### 3. Ejecutar comando "ionic serve"
 
