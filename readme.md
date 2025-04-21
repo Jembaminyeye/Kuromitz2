@@ -13,7 +13,7 @@
 3. Diseño de prototipo
 4. Navegación y UX
 5. Librerías  
-
+[Diseño de prototipos](#prototipo-de-diseño)
 
 # Resumen del Proyecto
 
@@ -104,8 +104,8 @@ Flujo de autenticación (ambos roles):
 * Redirección según rol tras login.
 
 ## Navegación por roles
-* Usuario
-* Administrador
+* ["Usuario"](https://github.com/Jembaminyeye/Kuromitz2/blob/master/otros/Navegación%20para%20usuarios.png)
+* ["Administrador"](https://github.com/Jembaminyeye/Kuromitz2/blob/master/otros/Navegación%20para%20administradores.png)
   
 ## Experiencia de usuario (UX)
 * Diseño centrado en el usuario final: Se prioriza el acceso rápido a recomendaciones, listas y funciones sociales.
@@ -123,11 +123,13 @@ Flujo de autenticación (ambos roles):
 6. Desde el perfil, puede cerrar sesión o cambiar de dispositivo sin perder su información.
 
 ## Estructura de navegacion
-### Diagrama de navegacion en carpeta [" otros "](https://github.com/Jembaminyeye/Kuromitz2/tree/master/otros)  
-en el diagrama tenemos un inicio de sesión que lleva a registro o directamente a home. Desde home, el usuario puede acceder a todas las pantallas principales: buscar, ver detalles, listas y perfil. Si el usuario es administrador, también puede navegar a Admin Dashboard (línea punteada anaranjada), donde está dividido en dos clústeres: usuario y administrador.
+### ["Diagrama de navegacion"](https://github.com/Jembaminyeye/Kuromitz2/blob/master/otros/Diagrama%20estructura%20navegación.png)   
+En el diagrama tenemos un inicio de sesión que lleva a registro o directamente a home. Desde home, el usuario puede acceder a todas las pantallas principales: buscar, ver detalles, listas y perfil. Si el usuario es administrador, también puede navegar a Admin Dashboard (línea punteada anaranjada), donde está dividido en dos clústeres: usuario y administrador.
 
 # Librerías del proyecto
 * Ionic Framework
 * Angular
 * TypeScript
+
+## Prototipo de diseño 
 
