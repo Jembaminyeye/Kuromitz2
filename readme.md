@@ -1,4 +1,4 @@
-﻿# Kuromtz, Aplicación recomendadora de películas y series.
+﻿# Kuromitz, Aplicación recomendadora de películas y series.
 # Presentado por:
 * Benjamin Rodriguez
 * Ignacio Layana
@@ -8,11 +8,11 @@
 
 
 #  Índice
-1. [Resumen del Proyecto](#resumen-del-proyecto)
-2. [Requerimientos](#requerimientos)
-3. [Diseño de prototipo](#prototipo-de-diseño)
-4. [Definición de la navegación y UX] (#navegación-y-ux)
-5. [Librerías] (#librerías)  
+1. Resumen del Proyecto
+2. Requerimientos
+3. Diseño de prototipo
+4. Navegación y UX
+5. Librerías  
 
 
 # Resumen del Proyecto
@@ -89,11 +89,7 @@ La aplicación es una plataforma de recomendación de películas y series desarr
   - El código fuente del frontend debe seguir buenas prácticas para facilitar futuras actualizaciones.
 
 
-
-
-## Prototipo de diseño
 # Prototipo de diseño
-
 
 [Figma - Prototipo Kuromtz] ( https://www.figma.com/design/y2yN6VCd7flSzcSV7a1zcA/Dise%C3%B1oPrototipo?node-id=72-2484&t=s6PICz4Nu0cg8Hgo-1 )
 
@@ -103,28 +99,34 @@ La aplicación es una plataforma de recomendación de películas y series desarr
 
 
 Flujo de autenticación (ambos roles):
-Pantalla de inicio de sesión
+* Pantalla de inicio de sesión
+* Pantalla de registro
+* Redirección según rol tras login.
 
+## Navegación por roles
+* Usuario
+* Administrador
+  
+## Experiencia de usuario (UX)
+* Diseño centrado en el usuario final: Se prioriza el acceso rápido a recomendaciones, listas y funciones sociales.
+* Interacciones fluidas: Feedback inmediato al calificar, comentar o buscar.
+* Navegación clara: Botones visibles, íconos comprensibles, y navegación coherente.
+* Responsividad: Adaptación a pantallas móviles y web sin pérdida de información.
+* Accesibilidad: Contrastes correctos, tipografías legibles y botones grandes.
 
-Pantalla de registro
+## Ejemplo flujo de uso (usuario)
+1. El usuario abre la app y se registra o inicia sesión.
+2. En la página de inicio ve recomendaciones personalizadas.
+3. Usa la barra de búsqueda para encontrar una película.
+4. Accede a su detalle, la califica y deja un comentario.
+5. Decide agregarla a su lista “Favoritas”.
+6. Desde el perfil, puede cerrar sesión o cambiar de dispositivo sin perder su información.
 
+## Estructura de navegacion
+### Diagrama 
 
-Redirección según rol tras login.
-
-
-
-
-
-
-
-
-
-
-
-
-# Librerías
+# Librerías del proyecto
 * Ionic Framework
 * Angular
 * TypeScript
-## Prototipo de diseño
-## Prototipo de dise
+
