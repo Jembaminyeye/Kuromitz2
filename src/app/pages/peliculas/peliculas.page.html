@@ -1,13 +1,12 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>peliculas</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">peliculas</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+  <div class="peliculas-container">
+    <div class="pelicula-card" *ngFor="let pelicula of peliculas">
+      <img [src]="pelicula.imagen" alt="Imagen de {{pelicula.titulo}}" />
+      <div class="info">
+        <h3>{{ pelicula.titulo }}</h3>
+        <p>⭐ {{ pelicula.calificacion }}</p>
+        <button>Reseñar</button>
+      </div>
+    </div>
+  </div>
 </ion-content>
