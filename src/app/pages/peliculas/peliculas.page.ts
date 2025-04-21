@@ -9,24 +9,28 @@ import { Component } from '@angular/core';
 export class PeliculasPage {
   peliculas = [
     {
-      titulo: 'Título de Película 1',
+      titulo: 'MINIONS',
       descripcion: 'Descripción breve de la película con detalles importantes para captar el interés del usuario.',
-      imagen: 'Imagen de Película 1',
+      imagen: 'assets/icon/183973.webp',
+      calificacion: 5.0
     },
     {
-      titulo: 'Título de Película 2',
+      titulo: 'Minecraft',
       descripcion: 'Descripción breve de la película con detalles importantes para captar el interés del usuario.',
-      imagen: 'Imagen de Película 2',
+      imagen: 'assets/icon/375_375.jpeg',
+      calificacion: 4.1
     },
     {
-      titulo: 'Título de Película 3',
+      titulo: 'Que paso ayer',
       descripcion: 'Descripción breve de la película con detalles importantes para captar el interés del usuario.',
-      imagen: 'Imagen de Película 3',
+      imagen: 'assets/icon/images.jfif',
+      calificacion: 4.9
     },
     {
-      titulo: 'Título de Película 4',
+      titulo: 'Batman',
       descripcion: 'Descripción breve de la película con detalles importantes para captar el interés del usuario.',
-      imagen: 'Imagen de Película 4',
+      imagen: 'assets/icon/batman.jpg',
+      calificacion: 4.5
     },
   ];
 }
