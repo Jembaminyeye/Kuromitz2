@@ -1,7 +1,17 @@
-<ion-header>
-<<<<<<< HEAD
-  
-=======
-
->>>>>>> d0f2b699bf7f934f33e21817e14b39144c014e9f
+<ion-header [translucent]="true">
+    <ion-toolbar class="custom-toolbar">
+      <ion-buttons slot="start">
+        <img src="assets/icon/logoxd.png" alt="Kuromtz Logo" style="height: 40px; margin-left: 10px;" />
+        <ion-button routerLink="/home">Home</ion-button>
+        <ion-button routerLink="/inicio">Novedades</ion-button>
+        <ion-button routerLink="/peliculas">Películas</ion-button>
+        <ion-button routerLink="/series">Series</ion-button>
+        <ion-button routerLink="/resenas">Reseñas</ion-button>
+      </ion-buttons>
+      <ion-buttons slot="end">
+        <ion-button routerLink="/login" fill="outline" shape="round">Iniciar Sesión</ion-button>
+        <ion-button routerLink="/registro" fill="ou tline" shape="round">Registrarse</ion-button>
+      </ion-buttons>
+    </ion-toolbar>
 </ion-header>
+  

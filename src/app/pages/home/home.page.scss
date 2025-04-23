@@ -1,9 +1,34 @@
 .home-content {
   --background: #000;
 
+  
+  .custom-comenzar {
+    --background: #b10000;
+    --color: #fff;
+    font-weight: bold;
+  
+    &:hover {
+      --background: #8a0000;
+    }
+  }
+  
+  .custom-resenas {
+    --background: transparent;
+    --color: #fff;
+    --border-color: #fff;
+    border: 2px solid #fff;
+    font-weight: bold;
+  
+    &:hover {
+      --background: #fff;
+      --color: #b10000;
+    }
+  }
+
+  
   .hero {
-    background: url('/assets/icon/cine.jpg') no-repeat center center / cover;
-    height: 100vh;
+    background: url('/assets/icon/ImagenCine.jpg') no-repeat center center / cover;
+    height: 50vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -49,7 +74,7 @@
   
   .resenas-section {
     background-color: #b10000;
-    padding: 2rem 1rem;
+    padding: 7rem 1rem;
 
     h2 {
       color: #fff;
@@ -71,3 +96,75 @@
     }
   }
 }
+
+/* Call to Action */
+.cta-section {
+  background: #fff;
+  padding: 3rem 1rem;
+  text-align: center;
+
+  h2 {
+    color: #b10000;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    color: #333;
+    font-size: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  ion-button {
+    --background: #b10000;
+    --color: #fff;
+    font-weight: bold;
+  }
+}
+
+/* Footer */
+.footer-toolbar {
+  --background: #000000;
+  color: #fff;
+  padding-top: 2rem;
+}
+
+.footer-top {
+  text-align: center;
+
+  h4 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+
+    li {
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+    }
+  }
+
+  .footer-logo {
+    width: 70px;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    font-size: 0.9rem;
+  }
+}
+
+.footer-bottom {
+  font-size: 0.8rem;
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+
+
+

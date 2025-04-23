@@ -1,3 +1,9 @@
+:host {
+  --ion-background-color: #ffffff;
+}
+
+
+
 .logo {
     width: 100px;
     height: auto;
@@ -9,9 +15,10 @@
     font-size: 24px;
     font-weight: 600;
     margin-top: 10px;
+    color: #666
   }
   
-  .subtitulo {
+  .subtitulo {  
     text-align: center;
     font-size: 14px;
     color: #666;

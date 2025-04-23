@@ -1,18 +1,3 @@
-<ion-header [translucent]="true">
-  <ion-toolbar color="danger">
-    <ion-buttons slot="start">
-      <img src="assets/logo-kuromtz.png" alt="Kuromtz Logo" style="height: 40px; margin-left: 10px;" />
-      <ion-button routerLink="/inicio" fill="clear">Inicio</ion-button>
-      <ion-button routerLink="/peliculas" fill="clear">Películas</ion-button>
-      <ion-button routerLink="/series" fill="clear">Series</ion-button>
-      <ion-button routerLink="/resenas" fill="clear">Reseñas</ion-button>
-    </ion-buttons>
-    <ion-buttons slot="end">
-      <ion-button routerLink="/login" fill="outline" shape="round" color="light">Iniciar Sesión</ion-button>
-      <ion-button routerLink="/registro" fill="outline" shape="round" color="light">Registrarse</ion-button>
-    </ion-buttons>
-  </ion-toolbar>
-</ion-header>
 
 <ion-content [fullscreen]="true" class="home-content">
   <!-- Hero Section -->
@@ -37,7 +22,7 @@
       <ion-col size="12" size-md="4" *ngFor="let resena of resenas">
         <ion-card class="resena-card">
           <ion-card-header>
-            <ion-card-title><strong>{{ resena.nombre }}</strong></ion-card-title>
+            <ion-card-title><strong>{{ resena.titulo }}</strong></ion-card-title>
             <ion-text color="warning">★★★★★</ion-text>
           </ion-card-header>
           <ion-card-content>

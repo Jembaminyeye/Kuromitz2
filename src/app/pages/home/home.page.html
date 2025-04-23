@@ -1,18 +1,4 @@
-<ion-header [translucent]="true">
-  <ion-toolbar color="danger">
-    <ion-buttons slot="start">
-      <img src="assets/icon/logoxd.png" alt="Kuromtz Logo" style="height: 40px; margin-left: 10px;" />
-      <ion-button routerLink="/inicio">Inicio</ion-button>
-      <ion-button routerLink="/peliculas">Películas</ion-button>
-      <ion-button routerLink="/series">Series</ion-button>
-      <ion-button routerLink="/resenas">Reseñas</ion-button>
-    </ion-buttons>
-    <ion-buttons slot="end">
-      <ion-button routerLink="/login" fill="outline" shape="round">Iniciar Sesión</ion-button>
-      <ion-button routerLink="/registro" fill="outline" shape="round">Registrarse</ion-button>
-    </ion-buttons>
-  </ion-toolbar>
-</ion-header>
+
 
 <ion-content [fullscreen]="true" class="home-content">
   <!-- Hero Section -->
@@ -21,8 +7,8 @@
       <h1>Descubre y Comparte tu<br><strong>Pasión por el Cine</strong></h1>
       <p>Únete a nuestra comunidad y comparte tus opiniones sobre las últimas películas y series. Tu voz importa.</p>
       <div class="hero-buttons">
-        <ion-button color="danger" size="large" shape="round">Comenzar Ahora</ion-button>
-        <ion-button fill="outline" size="large" shape="round" color="light">Ver Reseñas</ion-button>
+        <ion-button size="large" shape="round" class="custom-comenzar" routerLink="/registro">Comenzar Ahora</ion-button>
+        <ion-button size="large" shape="round" class="custom-resenas" routerLink="/resenas">Ver Reseñas</ion-button>
       </div>
     </div>
   </div>
@@ -46,4 +32,63 @@
       </ion-col>
     </ion-row>
   </ion-grid>
-</ion-content>
+<!-- Call to Action Section -->
+<ion-grid class="cta-section">
+  <ion-row class="ion-justify-content-center ion-text-center">
+    <ion-col size="12" size-md="8">
+      <h2>¿Listo para compartir tu opinión?</h2>
+      <p>Únete a nuestra comunidad de cinéfilos y deja tu huella en cada reseña.</p>
+      <ion-button color="light" expand="block" shape="round" size="large" routerLink="/registro">
+        Crear Cuenta
+      </ion-button>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+
+<!-- Footer Section -->
+<ion-footer class="footer">
+  <ion-toolbar class="footer-toolbar">
+    <ion-grid>
+      <ion-row class="footer-top">
+        <ion-col size="12" size-md="4" class="footer-brand">
+          <img src="assets/icon/logoxd.png" alt="Kuromtz Logo" class="footer-logo" />
+          <p>Descubre y comparte opiniones sobre películas y series.</p>
+        </ion-col>
+        <ion-col size="6" size-md="2">
+          <h4>Explorar</h4>
+          <ul>
+            <li>Películas</li>
+            <li>Series</li>
+            <li>Reseñas</li>
+            <li>Tops</li>
+          </ul>
+        </ion-col>
+        <ion-col size="6" size-md="2">
+          <h4>Comunidad</h4>
+          <ul>
+            <li>Listas</li>
+            <li>Foros</li>
+            <li>Blog</li>
+            <li>Eventos</li>
+          </ul>
+        </ion-col>
+        <ion-col size="6" size-md="2">
+          <h4>Legal</h4>
+          <ul>
+            <li>Términos</li>
+            <li>Privacidad</li>
+            <li>Cookies</li>
+            <li>Contacto</li>
+          </ul>
+        </ion-col>
+      </ion-row>
+      <ion-row class="footer-bottom ion-justify-content-center">
+        <ion-col size="12" class="ion-text-center">
+          © 2025 Kuromtz. Todos los derechos reservados.
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-footer>
+
+
