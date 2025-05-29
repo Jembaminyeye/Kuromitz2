@@ -6,7 +6,7 @@ import { ResenaService } from './resena.service';
 
 @Component({
   selector: 'app-resenas',
-  standalone: true,
+  //standalone: true,
   templateUrl: './resenas.page.html',
   styleUrls: ['./resenas.page.scss'],
   imports: [CommonModule, IonicModule, FormsModule],
@@ -32,7 +32,7 @@ export class ResenasPage implements OnInit {
   }
 
   cargarResenas(): void {
-    this.resenaService.obtenerResenas().subscribe({
+    this.resenaService.getResenas().subscribe({
       next: (datos: any) => this.resenas = datos,
       error: (err: any) => console.error("❌ Error al cargar reseñas:", err)
     });
@@ -46,7 +46,7 @@ export class ResenasPage implements OnInit {
 
 
   publicarResena(): void {
-    this.resenaService.crearResena(this.nuevaResena).subscribe({
+    this.resenaService.addResena(this.nuevaResena).subscribe({
       next: () => {
         alert("✅ Reseña publicada con éxito");
         this.cargarResenas();

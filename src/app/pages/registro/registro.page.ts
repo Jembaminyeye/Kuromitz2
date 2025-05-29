@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
+import { UsuarioService } from './usuario.service';
 
 @Component({
   selector: 'app-registro',
@@ -22,7 +23,8 @@ export class RegistroPage {
 
   constructor(
     private router: Router,
-    private alertController: AlertController
+    private alertController: AlertController,
+    private usuarioService: UsuarioService
   ) {}
 
   async registrar() {
@@ -50,11 +52,23 @@ export class RegistroPage {
       return;
     }
 
-    // Aquí podrías llamar a un servicio para registrar al usuario en el backend
-    console.log('Usuario registrado:', this.usuario);
-
-    // Redirigir a Home (puedes cambiarlo por otra ruta si quieres)
-    this.router.navigate(['/home']);
+    // Llama al servicio para registrar el usuario en el backend
+    this.usuarioService.registrar({
+      usuario: nombre,
+      rut,
+      correo,
+      region,
+      comuna,
+      contraseña: contrasena
+    }).subscribe({
+      next: (resp) => {
+        this.mostrarAlerta('Usuario registrado con éxito.');
+        this.router.navigate(['/home']);
+      },
+      error: (err) => {
+        this.mostrarAlerta(err.error?.error || 'Error al registrar usuario.');
+      }
+    });
   }
 
   async mostrarAlerta(mensaje: string) {

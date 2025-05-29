@@ -19,22 +19,22 @@
 
     <ion-item>
       <ion-label position="floating">Nombre de usuario</ion-label>
-      <ion-input type="text" required></ion-input>
+      <ion-input type="text" required [(ngModel)]="usuario.nombre" name="nombre"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label position="floating">RUT</ion-label>
-      <ion-input type="text" required></ion-input>
+      <ion-input type="text" required [(ngModel)]="usuario.rut" name="rut"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label position="floating">Correo Electrónico</ion-label>
-      <ion-input type="email" required></ion-input>
+      <ion-input type="email" required [(ngModel)]="usuario.correo" name="correo"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label>Región</ion-label>
-      <ion-select placeholder="Selecciona una región" required>
+      <ion-select placeholder="Selecciona una región" required [(ngModel)]="usuario.region" name="region">
         <ion-select-option value="rm">Región Metropolitana</ion-select-option>
         <ion-select-option value="valpo">Valparaíso</ion-select-option>
         <ion-select-option value="bio">Biobío</ion-select-option>
@@ -45,7 +45,7 @@
 
     <ion-item>
       <ion-label>Comuna</ion-label>
-      <ion-select placeholder="Selecciona una comuna" required>
+      <ion-select placeholder="Selecciona una comuna" required [(ngModel)]="usuario.comuna" name="comuna">
         <ion-select-option value="lc">Las Condes</ion-select-option>
         <ion-select-option value="prov">Providencia</ion-select-option>
         <ion-select-option value="scl">Santiago</ion-select-option>
@@ -56,12 +56,12 @@
 
     <ion-item>
       <ion-label position="floating">Contraseña</ion-label>
-      <ion-input type="password" required></ion-input>
+      <ion-input type="password" required [(ngModel)]="usuario.contrasena" name="contrasena"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label position="floating">Confirmar contraseña</ion-label>
-      <ion-input type="password" required></ion-input>
+      <ion-input type="password" required [(ngModel)]="usuario.confirmarContrasena" name="confirmarContrasena"></ion-input>
     </ion-item>
 
     <ion-item lines="none">

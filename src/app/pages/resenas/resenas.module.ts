@@ -11,8 +11,8 @@ import { ResenasPage } from './resenas.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    ResenasPageRoutingModule
+    ResenasPageRoutingModule,
+    ResenasPage
   ],
-  declarations: [ResenasPage]
 })
 export class ResenasPageModule {}
