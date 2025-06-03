@@ -9,7 +9,8 @@
         <div class="info">
           <h3>{{ pelicula.titulo }}</h3>
           <p>⭐ {{ pelicula.calificacion }}</p>
-          <button>Reseñar</button>
+          <button [routerLink]="['/resenas']">Reseñar</button>
+          <button (click)="agregarAMiLista(pelicula)">Agregar a mi lista</button> 
         </div>
       </div>
     </div>
@@ -24,7 +25,8 @@
         <div class="info">
           <h3>{{ pelicula.titulo }}</h3>
           <p>⭐ {{ pelicula.calificacion }}</p>
-          <button>Reseñar</button>
+          <button [routerLink]="['/resenas']">Reseñar</button>
+          <button (click)="agregarAMiLista(pelicula)">Agregar a mi lista</button> 
         </div>
       </div>
     </div>
@@ -39,7 +41,8 @@
         <div class="info">
           <h3>{{ pelicula.titulo }}</h3>
           <p>⭐ {{ pelicula.calificacion }}</p>
-          <button>Reseñar</button>
+          <button [routerLink]="['/resenas']">Reseñar</button>
+          <button (click)="agregarAMiLista(pelicula)">Agregar a mi lista</button> 
         </div>
       </div>
     </div>
@@ -54,10 +57,20 @@
         <div class="info">
           <h3>{{ pelicula.titulo }}</h3>
           <p>⭐ {{ pelicula.calificacion }}</p>
-          <button>Reseñar</button>
+          <button [routerLink]="['/resenas']">Reseñar</button>
+          <button (click)="agregarAMiLista(pelicula)">Agregar a mi lista</button> 
         </div>
       </div>
     </div>
   </div>
 
 </ion-content>
+
+<ion-fab vertical="bottom" horizontal="end" slot="fixed">
+  <ion-fab-button [routerLink]="['/mi-lista']" color="danger">
+    <ion-icon name="list-outline"></ion-icon>
+  </ion-fab-button>
+</ion-fab>
+
+
+

@@ -1,0 +1,21 @@
+<ion-content class="ion-padding fondo-gris">
+  <h2 class="titulo-rojo">🎞️ Mi Lista</h2>
+
+  <ion-card *ngFor="let peli of lista">
+    <img *ngIf="peli.imagen" [src]="peli.imagen" alt="Imagen de película">
+    
+    <ion-card-header>
+      <ion-card-title>{{ peli.titulo }}</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <p>{{ peli.descripcion }}</p>
+      <p *ngIf="peli.calificacion">⭐ Calificación: {{ peli.calificacion }}</p>
+      <ion-button color="danger" (click)="eliminar(peli.id)">Eliminar</ion-button>
+    </ion-card-content>
+  </ion-card>
+
+  <ng-container *ngIf="lista.length === 0">
+    <p class="mensaje-vacio">No hay películas en tu lista aún.</p>
+  </ng-container>
+</ion-content>
