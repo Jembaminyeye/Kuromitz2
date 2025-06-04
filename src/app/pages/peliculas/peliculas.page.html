@@ -1,12 +1,76 @@
 <ion-content>
-  <div class="peliculas-container">
-    <div class="pelicula-card" *ngFor="let pelicula of peliculas">
-      <img [src]="pelicula.imagen" alt="Imagen de {{pelicula.titulo}}" />
-      <div class="info">
-        <h3>{{ pelicula.titulo }}</h3>
-        <p>⭐ {{ pelicula.calificacion }}</p>
-        <button>Reseñar</button>
+
+  <!-- Sección principal de películas -->
+  <div class="peliculas-section">
+    <h2>📺 Películas</h2>
+    <div class="peliculas-container">
+      <div class="pelicula-card" *ngFor="let pelicula of peliculas">
+        <img [src]="pelicula.imagen" alt="Imagen de {{pelicula.titulo}}" />
+        <div class="info">
+          <h3>{{ pelicula.titulo }}</h3>
+          <p>⭐ {{ pelicula.calificacion }}</p>
+          <button [routerLink]="['/resenas']">Reseñar</button>
+          <button (click)="agregarAMiLista(pelicula)">Agregar a mi lista</button> 
+        </div>
       </div>
     </div>
   </div>
+
+  <!-- Más populares -->
+  <div class="peliculas-section">
+    <h2>🎬 Más Populares</h2>
+    <div class="peliculas-container">
+      <div class="pelicula-card" *ngFor="let pelicula of populares">
+        <img [src]="pelicula.imagen" alt="{{pelicula.titulo}}" />
+        <div class="info">
+          <h3>{{ pelicula.titulo }}</h3>
+          <p>⭐ {{ pelicula.calificacion }}</p>
+          <button [routerLink]="['/resenas']">Reseñar</button>
+          <button (click)="agregarAMiLista(pelicula)">Agregar a mi lista</button> 
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Románticas -->
+  <div class="peliculas-section">
+    <h2>💖 Románticas</h2>
+    <div class="peliculas-container">
+      <div class="pelicula-card" *ngFor="let pelicula of romanticas">
+        <img [src]="pelicula.imagen" alt="{{pelicula.titulo}}" />
+        <div class="info">
+          <h3>{{ pelicula.titulo }}</h3>
+          <p>⭐ {{ pelicula.calificacion }}</p>
+          <button [routerLink]="['/resenas']">Reseñar</button>
+          <button (click)="agregarAMiLista(pelicula)">Agregar a mi lista</button> 
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Terror -->
+  <div class="peliculas-section">
+    <h2>👻 Terror</h2>
+    <div class="peliculas-container">
+      <div class="pelicula-card" *ngFor="let pelicula of terror">
+        <img [src]="pelicula.imagen" alt="{{pelicula.titulo}}" />
+        <div class="info">
+          <h3>{{ pelicula.titulo }}</h3>
+          <p>⭐ {{ pelicula.calificacion }}</p>
+          <button [routerLink]="['/resenas']">Reseñar</button>
+          <button (click)="agregarAMiLista(pelicula)">Agregar a mi lista</button> 
+        </div>
+      </div>
+    </div>
+  </div>
+
 </ion-content>
+
+<ion-fab vertical="bottom" horizontal="end" slot="fixed">
+  <ion-fab-button [routerLink]="['/mi-lista']" color="danger">
+    <ion-icon name="list-outline"></ion-icon>
+  </ion-fab-button>
+</ion-fab>
+
+
+

@@ -31,6 +31,11 @@ const routes: Routes = [
     path: 'registro',
     loadChildren: () => import('./pages/registro/registro.module').then( m => m.RegistroPageModule)
   },
+  {
+    path: 'mi-lista',
+    loadChildren: () => import('./pages/mi-lista/lista.module').then( m => m.MiListaPageModule)
+  }
+
 ];
 
 @NgModule({
