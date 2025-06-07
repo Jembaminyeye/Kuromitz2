@@ -2,6 +2,8 @@ const express = require("express");
 const ruta = express.Router();
 const db = require("./db");
 
+//HAY UN TEMA CON LO QUE ES CALIFICACION PORQUE LA PONE DE FORMA NUMERICA Y NO EN ESTRELLAS
+
 // Obtener todas las películas de la lista de un usuario (requieres el id del usuario)
 ruta.get("/:usuario_id", (req, res) => {
   const usuario_id = parseInt(req.params.usuario_id);
