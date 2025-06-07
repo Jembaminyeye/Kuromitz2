@@ -1,0 +1,94 @@
+
+
+<ion-content [fullscreen]="true" class="home-content">
+  <!-- Hero Section -->
+  <div class="hero">
+    <div class="overlay">
+      <h1>Descubre y Comparte tu<br><strong>Pasión por el Cine</strong></h1>
+      <p>Únete a nuestra comunidad y comparte tus opiniones sobre las últimas películas y series. Tu voz importa.</p>
+      <div class="hero-buttons">
+        <ion-button size="large" shape="round" class="custom-comenzar" routerLink="/registro">Comenzar Ahora</ion-button>
+        <ion-button size="large" shape="round" class="custom-resenas" routerLink="/resenas">Ver Reseñas</ion-button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Reseñas Destacadas -->
+  <ion-grid class="resenas-section">
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="12" class="ion-text-center">
+        <h2>Reseñas Destacadas</h2>
+      </ion-col>
+      <ion-col size="12" size-md="4" *ngFor="let resena of resenas">
+        <ion-card class="resena-card">
+          <ion-card-header>
+            <ion-card-title><strong>{{ resena.nombre }}</strong></ion-card-title>
+            <ion-text color="warning">★★★★★</ion-text>
+          </ion-card-header>
+          <ion-card-content>
+            <p>"{{ resena.texto }}"</p>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+<!-- Call to Action Section -->
+<ion-grid class="cta-section">
+  <ion-row class="ion-justify-content-center ion-text-center">
+    <ion-col size="12" size-md="8">
+      <h2>¿Listo para compartir tu opinión?</h2>
+      <p>Únete a nuestra comunidad de cinéfilos y deja tu huella en cada reseña.</p>
+      <ion-button color="light" expand="block" shape="round" size="large" routerLink="/registro">
+        Crear Cuenta
+      </ion-button>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+
+<!-- Footer Section -->
+<ion-footer class="footer">
+  <ion-toolbar class="footer-toolbar">
+    <ion-grid>
+      <ion-row class="footer-top">
+        <ion-col size="12" size-md="4" class="footer-brand">
+          <img src="assets/icon/logoxd.png" alt="Kuromtz Logo" class="footer-logo" />
+          <p>Descubre y comparte opiniones sobre películas y series.</p>
+        </ion-col>
+        <ion-col size="6" size-md="2">
+          <h4>Explorar</h4>
+          <ul>
+            <li>Películas</li>
+            <li>Series</li>
+            <li>Reseñas</li>
+            <li>Tops</li>
+          </ul>
+        </ion-col>
+        <ion-col size="6" size-md="2">
+          <h4>Comunidad</h4>
+          <ul>
+            <li>Listas</li>
+            <li>Foros</li>
+            <li>Blog</li>
+            <li>Eventos</li>
+          </ul>
+        </ion-col>
+        <ion-col size="6" size-md="2">
+          <h4>Legal</h4>
+          <ul>
+            <li>Términos</li>
+            <li>Privacidad</li>
+            <li>Cookies</li>
+            <li>Contacto</li>
+          </ul>
+        </ion-col>
+      </ion-row>
+      <ion-row class="footer-bottom ion-justify-content-center">
+        <ion-col size="12" class="ion-text-center">
+          © 2025 Kuromtz. Todos los derechos reservados.
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-footer>
+
+

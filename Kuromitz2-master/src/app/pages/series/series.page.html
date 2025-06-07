@@ -1,0 +1,71 @@
+<ion-content>
+  <!-- Sección general de series -->
+  <div class="series-section">
+    <h2>📺 Series</h2>
+    <div class="peliculas-container">
+      <div class="pelicula-card" *ngFor="let serie of series">
+        <img [src]="serie.imagen" alt="Imagen de {{serie.titulo}}" />
+        <div class="info">
+          <h3>{{ serie.titulo }}</h3>
+          <p>⭐ {{ serie.calificacion }}</p>
+          <button [routerLink]="['/resenas']">Reseñar</button>
+          <button (click)="agregarAMiLista(serie)">Agregar a mi lista</button> 
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Más populares -->
+  <div class="series-section">
+    <h2>🔥 Más Populares</h2>
+    <div class="peliculas-container">
+      <div class="pelicula-card" *ngFor="let serie of populares">
+        <img [src]="serie.imagen" alt="{{serie.titulo}}" />
+        <div class="info">
+          <h3>{{ serie.titulo }}</h3>
+          <p>⭐ {{ serie.calificacion }}</p>
+          <button [routerLink]="['/resenas']">Reseñar</button>
+          <button (click)="agregarAMiLista(serie)">Agregar a mi lista</button> 
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Románticas -->
+  <div class="series-section">
+    <h2>💖 Románticas</h2>
+    <div class="peliculas-container">
+      <div class="pelicula-card" *ngFor="let serie of romanticas">
+        <img [src]="serie.imagen" alt="{{serie.titulo}}" />
+        <div class="info">
+          <h3>{{ serie.titulo }}</h3>
+          <p>⭐ {{ serie.calificacion }}</p>
+          <button [routerLink]="['/resenas']">Reseñar</button>
+          <button (click)="agregarAMiLista(serie)">Agregar a mi lista</button> 
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Terror -->
+  <div class="series-section">
+    <h2>👻 Terror</h2>
+    <div class="peliculas-container">
+      <div class="pelicula-card" *ngFor="let serie of terror">
+        <img [src]="serie.imagen" alt="{{serie.titulo}}" />
+        <div class="info">
+          <h3>{{ serie.titulo }}</h3>
+          <p>⭐ {{ serie.calificacion }}</p>
+          <button [routerLink]="['/resenas']">Reseñar</button>
+          <button (click)="agregarAMiLista(serie)">Agregar a mi lista</button> 
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>
+
+<ion-fab vertical="bottom" horizontal="end" slot="fixed">
+  <ion-fab-button [routerLink]="['/mi-lista']" color="danger">
+    <ion-icon name="list-outline"></ion-icon>
+  </ion-fab-button>
+</ion-fab>

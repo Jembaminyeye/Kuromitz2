@@ -1,0 +1,83 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Registro</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Registro</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div class="ion-padding">
+    <ion-img src="assets/icon/logoxd.png" class="logo"></ion-img>
+
+    <h2 class="titulo">Crear cuenta</h2>
+    <p class="subtitulo">Por favor completa todos los campos</p>
+
+    <ion-item>
+      <ion-label position="floating">Nombre de usuario</ion-label>
+      <ion-input type="text" required [(ngModel)]="usuario.nombre" name="nombre"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">RUT</ion-label>
+      <ion-input type="text" required [(ngModel)]="usuario.rut" name="rut"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Correo Electrónico</ion-label>
+      <ion-input type="email" required [(ngModel)]="usuario.correo" name="correo"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Región</ion-label>
+      <ion-select placeholder="Selecciona una región" required [(ngModel)]="usuario.region" name="region">
+        <ion-select-option value="rm">Región Metropolitana</ion-select-option>
+        <ion-select-option value="valpo">Valparaíso</ion-select-option>
+        <ion-select-option value="bio">Biobío</ion-select-option>
+        <ion-select-option value="araucania">La Araucanía</ion-select-option>
+        <ion-select-option value="otras">Otras</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Comuna</ion-label>
+      <ion-select placeholder="Selecciona una comuna" required [(ngModel)]="usuario.comuna" name="comuna">
+        <ion-select-option value="lc">Las Condes</ion-select-option>
+        <ion-select-option value="prov">Providencia</ion-select-option>
+        <ion-select-option value="scl">Santiago</ion-select-option>
+        <ion-select-option value="nunoa">Ñuñoa</ion-select-option>
+        <ion-select-option value="otras">Otras</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Contraseña</ion-label>
+      <ion-input type="password" required [(ngModel)]="usuario.contrasena" name="contrasena"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Confirmar contraseña</ion-label>
+      <ion-input type="password" required [(ngModel)]="usuario.confirmarContrasena" name="confirmarContrasena"></ion-input>
+    </ion-item>
+
+    <ion-item lines="none">
+      <ion-checkbox slot="start" [(ngModel)]="usuario.aceptaTerminos"></ion-checkbox>
+      <ion-label>Acepto los <a href="#">términos y condiciones</a></ion-label>
+    </ion-item>
+    
+
+    <ion-button expand="block" color="danger" (click)="registrar()" class="ion-margin-top">
+      Registrarse
+    </ion-button>
+    
+
+
+    <div class="ion-text-center ion-margin-top">
+      ¿Ya tienes una cuenta? <a routerLink="/login">Inicia sesión</a>
+    </div>
+  </div>
+</ion-content>

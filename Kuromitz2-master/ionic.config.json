@@ -1,0 +1,7 @@
+{
+  "name": "Kuromitz2",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

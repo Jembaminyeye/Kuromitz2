@@ -1,0 +1,23 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="custom-toolbar">
+    <ion-buttons slot="start">
+      <img src="assets/icon/logoxd.png" alt="Kuromtz Logo" style="height: 40px; margin-left: 10px;" />
+      <ion-button routerLink="/home">Home</ion-button>
+      <ion-button routerLink="/peliculas">Películas</ion-button>
+      <ion-button routerLink="/series">Series</ion-button>
+      <ion-button routerLink="/resenas">Reseñas</ion-button>
+    </ion-buttons>
+
+    <ion-buttons slot="end">
+      <ng-container *ngIf="!usuario; else conSesion">
+        <ion-button routerLink="/login" fill="outline" shape="round">Iniciar Sesión</ion-button>
+        <ion-button routerLink="/registro" fill="outline" shape="round">Registrarse</ion-button>
+      </ng-container>
+
+      <ng-template #conSesion>
+        <ion-label class="ion-margin-end">🎬 Hola, {{ usuario }}</ion-label>
+        <ion-button color="danger" (click)="cerrarSesion()" fill="outline" shape="round">Cerrar Sesión</ion-button>
+      </ng-template>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>

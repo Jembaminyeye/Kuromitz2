@@ -1,0 +1,67 @@
+:host {
+    --ion-background-color: #e6e3e3;
+  }
+  
+
+
+.reseñas-container { max-width: 800px; margin: 40px auto; padding: 0 16px; }
+
+.titulo-principal { text-align: center; font-size: 24px; font-weight: bold; margin-bottom: 30px; color: #c32323; }
+
+.tarjeta-reseña { background: #ffffff; border-radius: 12px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); padding: 20px; margin-bottom: 30px; display: flex; flex-direction: column; gap: 10px; }
+
+.tarjeta-header { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+
+.poster-placeholder { width: 50px; height: 60px; background-color: #322c3524; border-radius: 6px; font-weight: bold; display: flex; align-items: center; justify-content: center; color: #333; font-size: 12px; }
+
+.info-pelicula { flex: 1; }
+
+.titulo-pelicula { font-size: 18px; font-weight: 600; margin: 0; color: #111; }
+
+.genero-tiempo { font-size: 14px; color: #666; }
+
+.puntuacion { text-align: right; font-size: 14px; color: #8B0000; font-weight: bold; }
+
+.estrellas { display: block; font-size: 16px; }
+
+.valor { font-size: 12px; color: #333; }
+
+.descripcion { font-size: 14px; color: #444; line-height: 1.5; }
+
+.etiquetas { display: flex; gap: 8px; flex-wrap: wrap; }
+
+.chip { background: #000000; color: #f5f5f5fe; font-size: 12px; padding: 4px 10px; border-radius: 20px; }
+
+.acciones { display: flex; gap: 20px; color: #555; font-size: 14px; border-top: 1px solid #ff01ff; padding-top: 10px; }
+
+.accion ion-icon { margin-right: 4px; }
+
+.autor { display: flex; align-items: center; gap: 10px; font-size: 13px; color: #666; margin-top: 5px; }
+
+.avatar { background: #8B0000; color: #ff01ff; width: 26px; height: 26px; border-radius: 50%; font-size: 12px; font-weight: bold; display: flex; align-items: center; justify-content: center; }
+
+.tarjeta-reseña {
+    background: #fff;
+    border-radius: 12px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+    }
+  }
+  .titulo-principal {
+    background-color: #8b0000; // Rojo oscuro o el color que prefieras
+    color: #fff;
+    padding: 0.75rem 1.25rem;
+    border-radius: 8px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  }
+  
