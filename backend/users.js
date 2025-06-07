@@ -4,7 +4,31 @@ const db = require("./db");
 
 // Mostrar todos los usuarios
 ruta.get("/", (req, res) => {
-    res.status(200).json(UserList);
+    db.query("SELECT * FROM usuarios", (err, results) => {
+        if (err) return res.status(500).json({ error: "Error en la base de datos" });
+    res.status(200).json(results);
+    });
+});
+
+//ACTUALIZAR USUARIO
+ruta.put("/:id", (req, res) => {
+  const { usuario, correo } = req.body;
+  db.query(
+    "UPDATE usuarios SET usuario = ?, correo = ? WHERE id = ?",
+    [usuario, correo, req.params.id],
+    (err, result) => {
+      if (err) return res.status(500).json({ error: "Error en la base de datos" });
+      res.status(200).json({ mensaje: "Usuario actualizado" });
+    }
+  );
+});
+
+//ELIMINAR USUARIO
+ruta.delete("/:id", (req, res) => {
+  db.query("DELETE FROM usuarios WHERE id = ?", [req.params.id], (err) => {
+    if (err) return res.status(500).json({ error: "Error en la base de datos" });
+    res.status(200).json({ mensaje: "Usuario eliminado" });
+  });
 });
 
 // Registrar nuevo usuario

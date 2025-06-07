@@ -1,44 +1,56 @@
 const express = require("express");
 const ruta = express.Router();
+const db = require("./db");
 
-let MiLista = [];
+//HAY UN TEMA CON LO QUE ES CALIFICACION PORQUE LA PONE DE FORMA NUMERICA Y NO EN ESTRELLAS
 
-ruta.get("/", (req, res) => {
-  res.status(200).json(MiLista);
+// Obtener todas las películas de la lista de un usuario (requieres el id del usuario)
+ruta.get("/:usuario_id", (req, res) => {
+  const usuario_id = parseInt(req.params.usuario_id);
+
+  db.query(
+    "SELECT * FROM mi_lista WHERE usuario_id = ?",
+    [usuario_id],
+    (err, results) => {
+      if (err) return res.status(500).json({ error: "Error en la base de datos" });
+      res.status(200).json(results);
+    }
+  );
 });
 
+// Agregar película a la lista
 ruta.post("/", (req, res) => {
-  const { titulo, descripcion, imagen, calificacion } = req.body;
+  const { usuario_id, titulo, descripcion, imagen, calificacion } = req.body;
 
-  // Si no hay descripción, crear una automática a partir del título y calificación
-  const desc = descripcion || `Película "${titulo}" con calificación de ${calificacion || 'N/A'}.`;
-
-  if (!titulo) {
-    return res.status(400).json({ error: "El título es obligatorio." });
+  if (!usuario_id || !titulo) {
+    return res.status(400).json({ error: "Faltan campos obligatorios." });
   }
 
-  const nueva = {
-    id: MiLista.length + 1,
-    titulo,
-    descripcion: desc,
-    imagen: imagen || '',
-    calificacion: calificacion || null,
-  };
+  const desc = descripcion || `Película "${titulo}" con calificación de ${calificacion || "N/A"}`;
 
-  MiLista.push(nueva);
-  res.status(201).json({ mensaje: "Película agregada a tu lista con éxito." });
+  db.query(
+    "INSERT INTO mi_lista (usuario_id, titulo, descripcion, imagen, calificacion) VALUES (?, ?, ?, ?, ?)",
+    [usuario_id, titulo, desc, imagen || "", calificacion || null],
+    (err, results) => {
+      if (err) return res.status(500).json({ error: "Error al agregar a la lista" });
+      res.status(201).json({ mensaje: "Película agregada con éxito a tu lista." });
+    }
+  );
 });
 
+// Eliminar película de la lista
 ruta.delete("/:id", (req, res) => {
   const id = parseInt(req.params.id);
-  const index = MiLista.findIndex(p => p.id === id);
 
-  if (index === -1) {
-    return res.status(404).json({ error: "Película no encontrada." });
-  }
+  db.query("DELETE FROM mi_lista WHERE id = ?", [id], (err, result) => {
+    if (err) return res.status(500).json({ error: "Error al eliminar" });
 
-  MiLista.splice(index, 1);
-  res.status(200).json({ mensaje: "Película eliminada de tu lista." });
+    if (result.affectedRows === 0) {
+      return res.status(404).json({ error: "Película no encontrada en tu lista" });
+    }
+
+    res.status(200).json({ mensaje: "Película eliminada de tu lista." });
+  });
 });
 
 module.exports = ruta;
