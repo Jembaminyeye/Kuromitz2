@@ -89,8 +89,6 @@ ruta.post("/login", (req, res) => {
             if (results.length === 0) {
                 return res.status(401).json({ error: "Correo o contraseña incorrectos." });
             }
-<<<<<<< HEAD
-
             const usuario = results[0];
             
             // Crear el token
@@ -107,9 +105,7 @@ ruta.post("/login", (req, res) => {
                 id: usuario.id,
                 token: token
             });
-=======
             res.status(200).json({ mensaje: "Inicio de sesión exitoso", usuario: results[0].usuario, id: results[0].id });
->>>>>>> d6efa52 (EP 2.4: Consumo de la API desde Ionic usando HttpClient.)
         }
     );
 });
