@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
+import { ApiService } from '../../services/api.service'; // importa tu servicio
 
 @Component({
   selector: 'app-login',
@@ -10,22 +10,19 @@ import { HttpClient } from '@angular/common/http';
 })
 export class LoginPage implements OnInit {
   correo: string = '';
-  contrasena: string = ''; // SIN ñ para evitar errores
+  contrasena: string = '';
 
-  constructor(private router: Router, private http: HttpClient) {}
+  constructor(private router: Router, private api: ApiService) {}
 
   ngOnInit() {}
 
+ // login.page.ts
   login() {
-    const datos = {
-      correo: this.correo,
-      contraseña: this.contrasena // Aquí sí va con ñ porque el backend lo espera así
-    };
-
-    this.http.post<any>('http://localhost:3000/usuarios/login', datos).subscribe({
+    this.api.login(this.correo, this.contrasena).subscribe({
       next: (respuesta) => {
         alert('✅ Sesión iniciada con éxito');
-        localStorage.setItem('usuario', respuesta.usuario); // Guardar nombre
+        localStorage.setItem('usuario', respuesta.usuario);
+        localStorage.setItem('usuarioId', respuesta.id); // <-- Guarda el id
         this.router.navigate(['/home']);
       },
       error: (err) => {

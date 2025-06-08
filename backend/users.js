@@ -74,7 +74,7 @@ ruta.post("/login", (req, res) => {
             if (results.length === 0) {
                 return res.status(401).json({ error: "Correo o contraseña incorrectos." });
             }
-            res.status(200).json({ mensaje: "Inicio de sesión exitoso", usuario: results[0].usuario });
+            res.status(200).json({ mensaje: "Inicio de sesión exitoso", usuario: results[0].usuario, id: results[0].id });
         }
     );
 });

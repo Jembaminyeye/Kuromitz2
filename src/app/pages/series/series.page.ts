@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { MiListaService } from '../mi-lista/mi-lista.service';
+import { ApiService } from '../../services/api.service';
 import { ToastController } from '@ionic/angular';
 
 @Component({
@@ -10,7 +10,7 @@ import { ToastController } from '@ionic/angular';
 })
 export class SeriesPage {
   constructor(
-    private listaService: MiListaService,
+    private apiService: ApiService,
     private toastController: ToastController
   ) {}
   series = [
@@ -104,14 +104,16 @@ terror = [
 ];
 
   async agregarAMiLista(serie: any) {
+    const usuarioId = Number(localStorage.getItem('usuarioId'));
     const serieParaEnviar = {
+      usuario_id: usuarioId,
       titulo: serie.titulo,
       descripcion: serie.descripcion || '',
       imagen: serie.imagen,
       calificacion: serie.calificacion,
     };
 
-    this.listaService.addPelicula(serieParaEnviar).subscribe({  // Puedes cambiar el nombre si prefieres "addSerie"
+    this.apiService.addPelicula(serieParaEnviar).subscribe({  // Puedes cambiar el nombre si prefieres "addSerie"
       next: async () => {
         const toast = await this.toastController.create({
           message: '🎉 Serie agregada a tu lista.',

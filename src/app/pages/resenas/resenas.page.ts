@@ -2,11 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
-import { ResenaService } from './resena.service';
+import { ApiService } from '../../services/api.service';
 
 @Component({
   selector: 'app-resenas',
-  //standalone: true,
   templateUrl: './resenas.page.html',
   styleUrls: ['./resenas.page.scss'],
   imports: [CommonModule, IonicModule, FormsModule],
@@ -25,14 +24,14 @@ export class ResenasPage implements OnInit {
     autor: localStorage.getItem("usuario") ?? "Invitado"
   };
 
-  constructor(private resenaService: ResenaService) {}
+  constructor(private api: ApiService) {}
 
   ngOnInit(): void {
     this.cargarResenas();
   }
 
   cargarResenas(): void {
-    this.resenaService.getResenas().subscribe({
+    this.api.getResenas().subscribe({
       next: (datos: any) => this.resenas = datos,
       error: (err: any) => console.error("❌ Error al cargar reseñas:", err)
     });
@@ -41,12 +40,10 @@ export class ResenasPage implements OnInit {
   seleccionarEstrellas(valor: number) {
     this.nuevaResena.puntuacion = valor;
     this.nuevaResena.estrellas = '★'.repeat(valor) + '☆'.repeat(5 - valor);
-    
   }
 
-
   publicarResena(): void {
-    this.resenaService.addResena(this.nuevaResena).subscribe({
+    this.api.addResena(this.nuevaResena).subscribe({
       next: () => {
         alert("✅ Reseña publicada con éxito");
         this.cargarResenas();

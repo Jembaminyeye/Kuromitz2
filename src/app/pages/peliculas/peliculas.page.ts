@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { MiListaService } from '../mi-lista/mi-lista.service';
+import { ApiService } from '../../services/api.service';
 import { ToastController } from '@ionic/angular';
 
 @Component({
@@ -11,7 +11,7 @@ import { ToastController } from '@ionic/angular';
 
 export class PeliculasPage {
   constructor(
-    private listaService: MiListaService,
+    private apiService: ApiService,
     private toastController: ToastController
   ) {}
   peliculas = [
@@ -105,14 +105,16 @@ terror = [
 ];
 
   async agregarAMiLista(pelicula: any) {
+  const usuarioId = Number(localStorage.getItem('usuarioId')); // Obtén el usuarioId guardado al hacer login
   const peliParaEnviar = {
+    usuario_id: usuarioId, // <-- Agrega el usuario_id aquí
     titulo: pelicula.titulo,
     descripcion: pelicula.descripcion || '',
     imagen: pelicula.imagen,
     calificacion: pelicula.calificacion,
   };
 
-  this.listaService.addPelicula(peliParaEnviar).subscribe({
+  this.apiService.addPelicula(peliParaEnviar).subscribe({
     next: async () => {
       const toast = await this.toastController.create({
         message: '🎉 Película agregada a tu lista.',

@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
-import { MiListaService } from './mi-lista.service';
+import { ApiService } from '../../services/api.service';
 
 @Component({
   selector: 'app-mi-lista',
@@ -13,27 +13,26 @@ import { MiListaService } from './mi-lista.service';
 export class MiListaPage {
   lista: any[] = [];
 
-  constructor(private listaService: MiListaService) {}
+  constructor(private apiService: ApiService) {}
 
   ionViewWillEnter() {
     this.cargarLista();
   }
 
   cargarLista() {
-    this.listaService.getLista().subscribe({
-      next: (data: any) => {
-        console.log('Películas recibidas del backend:', data);
-        this.lista = data;
-      },
-      error: err => console.error("Error cargando lista:", err)
-    });
-  }
+  const usuarioId = Number(localStorage.getItem('usuarioId'));
+  this.apiService.getLista(usuarioId).subscribe({
+    next: (data: any) => {
+      this.lista = data;
+    },
+    error: err => console.error("Error cargando lista:", err)
+  });
+}
 
   eliminar(id: number) {
-    this.listaService.removePelicula(id).subscribe({
+    this.apiService.deletePelicula(id).subscribe({
       next: () => this.cargarLista(),
       error: err => alert("Error al eliminar")
     });
   }
 }
-
