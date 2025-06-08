@@ -10,7 +10,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.use("/usuarios", rutaUsuarios);
+app.use("/usuarios", rutaUsuarios); //
 app.use("/resenas", rutaResenas);
 app.use("/mi-lista", rutaMiLista);
 

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
-import { UsuarioService } from './usuario.service';
+import { ApiService } from '../../services/api.service';
 
 @Component({
   selector: 'app-registro',
@@ -24,7 +24,7 @@ export class RegistroPage {
   constructor(
     private router: Router,
     private alertController: AlertController,
-    private usuarioService: UsuarioService
+    private api: ApiService
   ) {}
 
   async registrar() {
@@ -52,8 +52,7 @@ export class RegistroPage {
       return;
     }
 
-    // Llama al servicio para registrar el usuario en el backend
-    this.usuarioService.registrar({
+    this.api.registrarUsuario({
       usuario: nombre,
       rut,
       correo,
@@ -61,7 +60,7 @@ export class RegistroPage {
       comuna,
       contraseña: contrasena
     }).subscribe({
-      next: (resp) => {
+      next: () => {
         this.mostrarAlerta('Usuario registrado con éxito.');
         this.router.navigate(['/home']);
       },
