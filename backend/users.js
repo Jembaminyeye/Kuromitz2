@@ -1,6 +1,8 @@
 const express = require("express");
 const ruta = express.Router();
 const db = require("./db");
+const jwt = require("jsonwebtoken");
+const SECRET_KEY = "clave_secreta_super_segura";
 
 // Mostrar todos los usuarios
 ruta.get("/", (req, res) => {
@@ -53,16 +55,29 @@ ruta.post("/registro", (req, res) => {
             db.query(
                 "INSERT INTO usuarios (usuario, rut, correo, contraseña) VALUES (?, ?, ?, ?)",
                 [usuario, rut, correo, contraseña],
-                (err, results) => {
+                (err, result) => {
                     if (err) return res.status(500).json({ error: "Error al registrar usuario" });
-                    res.status(201).json({ mensaje: "Usuario registrado con éxito." });
+
+                    const usuarioRegistrado = {
+                        id: result.insertId,
+                        usuario
+                    };
+
+                    const token = jwt.sign(usuarioRegistrado, SECRET_KEY, { expiresIn: "2h" });
+
+                    
+
+                    res.status(201).json({
+                        mensaje: "Usuario registrado con éxito.",
+                        ...usuarioRegistrado,
+                        token
+                    });
                 }
             );
         }
     );
 });
 
-// Login
 ruta.post("/login", (req, res) => {
     const { correo, contraseña } = req.body;
 
@@ -74,7 +89,23 @@ ruta.post("/login", (req, res) => {
             if (results.length === 0) {
                 return res.status(401).json({ error: "Correo o contraseña incorrectos." });
             }
-            res.status(200).json({ mensaje: "Inicio de sesión exitoso", usuario: results[0].usuario });
+
+            const usuario = results[0];
+            
+            // Crear el token
+            const token = jwt.sign(
+                { id: usuario.id, usuario: usuario.usuario },
+                SECRET_KEY,
+                { expiresIn: "2h" } // el token expirará en 2 horas
+            );
+
+            // Enviar el token en la respuesta
+            res.status(200).json({
+                mensaje: "Inicio de sesión exitoso",
+                usuario: usuario.usuario,
+                id: usuario.id,
+                token: token
+            });
         }
     );
 });
