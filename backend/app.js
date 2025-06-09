@@ -3,16 +3,17 @@ const cors = require("cors");
 const rutaUsuarios = require("./users");
 const rutaResenas = require("./resenas");
 const rutaMiLista = require("./mi-lista");
-
+const verificarToken = require("./middleware/auth");
 
 const app = express(); 
 
 app.use(cors());
 app.use(express.json());
 
-app.use("/usuarios", rutaUsuarios); //
-app.use("/resenas", rutaResenas);
-app.use("/mi-lista", rutaMiLista);
+app.use("/usuarios", rutaUsuarios);
+app.use("/resenas", verificarToken, rutaResenas);
+app.use("/mi-lista", verificarToken, rutaMiLista);
+
 
 
 app.get("/", (req, res) => {
