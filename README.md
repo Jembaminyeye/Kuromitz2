@@ -1,13 +1,26 @@
-# Kuromitz, Aplicación recomendadora de películas y series.
+# Kuromitz - Proyecto Web y Móvil
+Plataforma de recomendación de películas y series desarrollada con Ionic + Angular (frontend) y Node.js + Express (backend), con autenticación JWT y consumo de API REST.
 ## Presentado por:
 Benjamin Rodriguez, Ignacio Layana, Javier Morales, Sebastián rojas y Sean Jamen
 
-# Entrega Parcial 1: Diseño y Estructura inicial
-### Objetivo: Definir el diseno de la aplicación y construir la estructura del frontend en Ionic+ Angular
+Entrega Parcial 2 - Incluye integración completa frontend-backend.
 
 # Ejecución del proyecto
-### 1. Descargar el zip del proyecto y extraer los archivos
-### 2. Ejecutar el terminal posicionandote en la carpet "Kuromitz2"
-### 3. Ejecutar comando "ionic serve"
+## Cómo ejecutar
+### Backend
+1. Ir a la carpeta `backend`
+2. Ejecutar `npm install`
+3. Crear archivo `.env` con configuración de DB si se usa
+4. Ejecutar `node app.js`
 
-# Más información técnica sobre el proyecto [aquí](https://github.com/Jembaminyeye/Kuromitz2/blob/master/readme.md)
+### Frontend
+1. Ir a la carpeta `src/`
+2. Ejecutar `npm install`
+3. Ejecutar `ionic serve`
+
+# Tecnologías usadas
+- Frontend: Ionic + Angular
+- Backend: Node.js + Express
+- Base de datos: MySQL
+- Autenticación: JWT
+- Herramientas: Postman, Visual Studio Code
