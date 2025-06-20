@@ -16,22 +16,38 @@ export class MiListaPage {
   constructor(private apiService: ApiService) {}
 
   ionViewWillEnter() {
-    this.cargarLista();
+    const usuarioId = Number(localStorage.getItem('usuarioId'));
+    if (!usuarioId) {
+      this.lista = []; // Limpiar la lista si no hay sesión
+      return;
+    }
+
+    this.cargarLista(usuarioId);
+}
+
+  cargarLista(usuarioId: number) {
+
+    if (!usuarioId) {
+      console.warn("🔒 Usuario no logueado, no se puede cargar la lista.");
+      this.lista = [];
+      return;
+    }
+
+    this.apiService.getLista(usuarioId).subscribe({
+      next: (data: any) => {
+        this.lista = data;
+      },
+      error: err => {
+        console.error("Error cargando lista:", err);
+        this.lista = [];
+      }
+    });
   }
 
-  cargarLista() {
-  const usuarioId = Number(localStorage.getItem('usuarioId'));
-  this.apiService.getLista(usuarioId).subscribe({
-    next: (data: any) => {
-      this.lista = data;
-    },
-    error: err => console.error("Error cargando lista:", err)
-  });
-}
 
   eliminar(id: number) {
     this.apiService.deletePelicula(id).subscribe({
-      next: () => this.cargarLista(),
+      next: () => this.cargarLista(id),
       error: err => alert("Error al eliminar")
     });
   }

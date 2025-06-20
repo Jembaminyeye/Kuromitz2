@@ -1,6 +1,8 @@
 const express = require("express");
 const ruta = express.Router();
 const db = require("./db");
+const xss = require("xss");
+
 
 // Obtener todas las reseñas
 ruta.get("/", (req, res) => {
@@ -18,16 +20,17 @@ ruta.get("/", (req, res) => {
 
 // Publicar una nueva reseña
 ruta.post("/", (req, res) => {
-  const {
-    titulo,
-    genero,
-    duracion,
-    estrellas,
-    puntuacion,
-    descripcion,
-    etiquetas,
-    autor // nombre de usuario del autor
-  } = req.body;
+  const titulo = xss(req.body.titulo);
+  const genero = xss(req.body.genero);
+  const duracion = parseInt(req.body.duracion || 0);
+  const estrellas = xss(req.body.estrellas || "★★★☆☆");
+  const puntuacion = parseFloat(req.body.puntuacion);
+  const descripcion = xss(req.body.descripcion);
+  const etiquetas = Array.isArray(req.body.etiquetas)
+    ? req.body.etiquetas.map(et => xss(et))
+    : xss(req.body.etiquetas || "");
+  const autor = xss(req.body.autor);
+
 
   if (!titulo || !genero || !puntuacion || !descripcion || !autor) {
     return res.status(400).json({ error: "Faltan campos obligatorios." });

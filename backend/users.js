@@ -1,6 +1,9 @@
 const express = require("express");
 const ruta = express.Router();
 const db = require("./db");
+const bcrypt = require('bcryptjs');
+const xss = require("xss");
+
 
 // Mostrar todos los usuarios
 ruta.get("/", (req, res) => {
@@ -12,7 +15,9 @@ ruta.get("/", (req, res) => {
 
 //ACTUALIZAR USUARIO
 ruta.put("/:id", (req, res) => {
-  const { usuario, correo } = req.body;
+  const usuario = xss(req.body.usuario);
+  const correo = xss(req.body.correo);
+
   db.query(
     "UPDATE usuarios SET usuario = ?, correo = ? WHERE id = ?",
     [usuario, correo, req.params.id],
@@ -32,52 +37,58 @@ ruta.delete("/:id", (req, res) => {
 });
 
 // Registrar nuevo usuario
-ruta.post("/registro", (req, res) => {
-    const { usuario, rut, correo, contraseña } = req.body;
+ruta.post("/registro", async (req, res) => {
+  const usuario = xss(req.body.usuario);
+    const rut = xss(req.body.rut);
+    const correo = xss(req.body.correo);
+    const contraseña = req.body.contraseña;
 
-    if (!usuario || !rut || !correo || !contraseña) {
-        return res.status(400).json({ error: "Faltan campos obligatorios." });
-    }
 
-    // Verifica si el correo ya existe
+  if (!usuario || !rut || !correo || !contraseña) {
+    return res.status(400).json({ error: "Faltan campos obligatorios." });
+  }
+
+  db.query("SELECT * FROM usuarios WHERE correo = ?", [correo], async (err, results) => {
+    if (err) return res.status(500).json({ error: "Error en la base de datos" });
+    if (results.length > 0) return res.status(409).json({ error: "El correo ya está registrado." });
+
+    const hash = await bcrypt.hash(contraseña, 10); // encriptación
+
     db.query(
-        "SELECT * FROM usuarios WHERE correo = ?",
-        [correo],
-        (err, results) => {
-            if (err) return res.status(500).json({ error: "Error en la base de datos" });
-            if (results.length > 0) {
-                return res.status(409).json({ error: "El correo ya está registrado." });
-            }
-
-            // Inserta el nuevo usuario
-            db.query(
-                "INSERT INTO usuarios (usuario, rut, correo, contraseña) VALUES (?, ?, ?, ?)",
-                [usuario, rut, correo, contraseña],
-                (err, results) => {
-                    if (err) return res.status(500).json({ error: "Error al registrar usuario" });
-                    res.status(201).json({ mensaje: "Usuario registrado con éxito." });
-                }
-            );
-        }
+      "INSERT INTO usuarios (usuario, rut, correo, contraseña) VALUES (?, ?, ?, ?)",
+      [usuario, rut, correo, hash],
+      (err, results) => {
+        if (err) return res.status(500).json({ error: "Error al registrar usuario" });
+        res.status(201).json({ mensaje: "Usuario registrado con éxito." });
+      }
     );
+  });
 });
 
 // Login
+// Login
 ruta.post("/login", (req, res) => {
-    const { correo, contraseña } = req.body;
+  const correo = xss(req.body.correo); 
+  const contrasenaIngresada = req.body.contraseña; // ✅ Aquí defines la contraseña ingresada
 
-    db.query(
-        "SELECT * FROM usuarios WHERE correo = ? AND contraseña = ?",
-        [correo, contraseña],
-        (err, results) => {
-            if (err) return res.status(500).json({ error: "Error en la base de datos" });
-            if (results.length === 0) {
-                return res.status(401).json({ error: "Correo o contraseña incorrectos." });
-            }
-            res.status(200).json({ mensaje: "Inicio de sesión exitoso", usuario: results[0].usuario, id: results[0].id });
-        }
-    );
+  db.query("SELECT * FROM usuarios WHERE correo = ?", [correo], async (err, results) => {
+    if (err) return res.status(500).json({ error: "Error en la base de datos" });
+    if (results.length === 0) return res.status(401).json({ error: "Correo o contraseña incorrectos." });
+
+    const usuario = results[0];
+    const valido = await bcrypt.compare(contrasenaIngresada, usuario.contraseña); // ✅ Aquí usas la variable correcta
+
+    if (!valido) return res.status(401).json({ error: "Correo o contraseña incorrectos." });
+
+    res.status(200).json({
+      mensaje: "Inicio de sesión exitoso",
+      usuario: usuario.usuario,
+      id: usuario.id
+    });
+  });
 });
+
+
 
 module.exports = ruta;
 

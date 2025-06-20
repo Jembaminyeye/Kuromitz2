@@ -51,6 +51,10 @@ export class RegistroPage {
       this.mostrarAlerta('Las contraseñas no coinciden.');
       return;
     }
+    if (!correo.includes('@')) {
+      this.mostrarAlerta('El correo no es válido.');
+      return;
+    }
 
     this.api.registrarUsuario({
       usuario: nombre,
