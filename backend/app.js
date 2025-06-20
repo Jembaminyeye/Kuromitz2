@@ -16,8 +16,9 @@ app.use("/mi-lista", verificarToken, rutaMiLista);
 
 
 
+
 app.get("/", (req, res) => {
-  res.send("✅ API del backend funcionando :D");
+  res.send("✅ API del backend funcionando :P");
 });
 
 const PORT = 3000;
