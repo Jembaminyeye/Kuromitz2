@@ -10,6 +10,13 @@ export class ApiService {
 
   constructor(private http: HttpClient) {}
 
+  // Buscar películas por nombre
+  buscarPeliculas(query: string) {
+    const apiKey = '9005097481cb5f13eb77846bbd00df11';
+    const url = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&language=es-ES&query=${encodeURIComponent(query)}`;
+    return this.http.get(url);
+  }
+
   // Obtener la lista del usuario
   getLista(usuarioId: number): Observable<any> {
     return this.http.get(`${this.baseUrl}/mi-lista/${usuarioId}`);

@@ -55,4 +55,6 @@ export class MiListaPage {
       error: err => alert("Error al eliminar")
     });
   }
+  peliculasPopulares: any[] = [];
+
 }

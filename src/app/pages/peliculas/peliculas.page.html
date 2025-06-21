@@ -1,4 +1,28 @@
 <ion-content>
+<!-- Buscador de películas externas -->
+<ion-item>
+  <ion-input [(ngModel)]="busqueda" placeholder="Buscar películas..." (ionChange)="buscarPeliculas()"></ion-input>
+</ion-item>
+
+<div *ngIf="resultadosBusqueda.length">
+  <h2>Resultados de búsqueda</h2>
+  <ion-card *ngFor="let peli of resultadosBusqueda">
+    <img *ngIf="peli.poster_path" [src]="'https://image.tmdb.org/t/p/w200' + peli.poster_path" alt="{{peli.title}}">
+    <ion-card-header>
+      <ion-card-title>{{ peli.title }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>{{ peli.overview }}</p>
+      <p *ngIf="peli.vote_average">⭐ Calificación: {{ peli.vote_average }}</p>
+      <ion-button color="primary" (click)="agregarAMiLista({
+        titulo: peli.title,
+        descripcion: peli.overview,
+        imagen: 'https://image.tmdb.org/t/p/w200' + peli.poster_path,
+        calificacion: peli.vote_average
+      })">Agregar a mi lista</ion-button>
+    </ion-card-content>
+  </ion-card>
+</div>
 
   <!-- Sección principal de películas -->
   <div class="peliculas-section">

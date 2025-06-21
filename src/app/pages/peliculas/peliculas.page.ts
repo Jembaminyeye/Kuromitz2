@@ -104,6 +104,26 @@ terror = [
   },
 ];
 
+  busqueda: string = '';
+  resultadosBusqueda: any[] = [];
+
+  buscarPeliculas() {
+    if (!this.busqueda.trim()) {
+      this.resultadosBusqueda = [];
+      return;
+    }
+    this.apiService.buscarPeliculas(this.busqueda).subscribe({
+      next: (data: any) => {
+        this.resultadosBusqueda = data.results;
+      },
+      error: err => {
+        console.error("Error buscando películas:", err);
+        this.resultadosBusqueda = [];
+      }
+    });
+  }
+
+
   async agregarAMiLista(pelicula: any) {
   const usuarioId = Number(localStorage.getItem('usuarioId')); // Obtén el usuarioId guardado al hacer login
   const peliParaEnviar = {
