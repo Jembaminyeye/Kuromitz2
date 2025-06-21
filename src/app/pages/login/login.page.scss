@@ -149,3 +149,16 @@ ion-content {
   0% { opacity: 0; transform: scale(0.95); }
   100% { opacity: 1; transform: scale(1); }
 }
+
+
+ion-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  --background: #f8f8f8;
+}
+
+.login-container {
+  margin: auto; /* Asegura el centrado si algo más interfiere */
+}

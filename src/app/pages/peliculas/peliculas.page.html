@@ -1,28 +1,62 @@
 <ion-content>
-<!-- Buscador de películas externas -->
-<ion-item>
-  <ion-input [(ngModel)]="busqueda" placeholder="Buscar películas..." (ionChange)="buscarPeliculas()"></ion-input>
-</ion-item>
+<!-- Buscador visualmente mejorado -->
+  <ion-searchbar
+    [(ngModel)]="busqueda"
+    (ionInput)="buscarPeliculas()"
+    placeholder="🎥 Buscar películas..."
+    showClearButton="focus"
+    debounce="300"
+    animated="true"
+  ></ion-searchbar>
 
-<div *ngIf="resultadosBusqueda.length">
-  <h2>Resultados de búsqueda</h2>
-  <ion-card *ngFor="let peli of resultadosBusqueda">
-    <img *ngIf="peli.poster_path" [src]="'https://image.tmdb.org/t/p/w200' + peli.poster_path" alt="{{peli.title}}">
-    <ion-card-header>
-      <ion-card-title>{{ peli.title }}</ion-card-title>
+  <!-- Resultados de búsqueda -->
+  <ion-card *ngIf="resultadosBusqueda.length">
+    <ion-card-header color="light">
+      <ion-card-title>Resultados de búsqueda</ion-card-title>
     </ion-card-header>
     <ion-card-content>
-      <p>{{ peli.overview }}</p>
-      <p *ngIf="peli.vote_average">⭐ Calificación: {{ peli.vote_average }}</p>
-      <ion-button color="primary" (click)="agregarAMiLista({
-        titulo: peli.title,
-        descripcion: peli.overview,
-        imagen: 'https://image.tmdb.org/t/p/w200' + peli.poster_path,
-        calificacion: peli.vote_average
-      })">Agregar a mi lista</ion-button>
+      <ion-grid>
+        <ion-row>
+          <ion-col size="12" size-md="6" size-lg="4" *ngFor="let peli of resultadosBusqueda">
+            <ion-card>
+              <img
+                *ngIf="peli.poster_path"
+                [src]="'https://image.tmdb.org/t/p/w400' + peli.poster_path"
+                alt="{{peli.title}}"
+              />
+              <ion-card-header>
+                <ion-card-title>{{ peli.title }}</ion-card-title>
+              </ion-card-header>
+              <ion-card-content>
+                <p>{{ peli.overview ? (peli.overview | slice:0:120) + '...' : 'Sin descripción disponible.' }}</p>
+                <p *ngIf="peli.vote_average">⭐ {{ peli.vote_average }}</p>
+                <ion-button
+                  expand="block"
+                  size="small"
+                  color="success"
+                  (click)="agregarAMiLista({
+                    titulo: peli.title,
+                    descripcion: peli.overview,
+                    imagen: 'https://image.tmdb.org/t/p/w300' + peli.poster_path,
+                    calificacion: peli.vote_average
+                  })"
+                >
+                  Agregar a mi lista
+                </ion-button>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
     </ion-card-content>
   </ion-card>
-</div>
+
+  <!-- Si no hay resultados pero hay texto -->
+  <div *ngIf="!resultadosBusqueda.length && busqueda.trim()">
+    <ion-text color="medium">
+      <p style="text-align: center; margin-top: 2rem;">😕 No se encontraron películas con ese nombre.</p>
+    </ion-text>
+  </div>
 
   <!-- Sección principal de películas -->
   <div class="peliculas-section">

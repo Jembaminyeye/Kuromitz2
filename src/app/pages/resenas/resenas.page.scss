@@ -1,5 +1,5 @@
 :host {
-    --ion-background-color: #e6e3e3;
+    --ion-background-color: #e8dfdf;
   }
   
 
@@ -65,3 +65,30 @@
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
   }
   
+.formulario-resena {
+  background-color: #ffffff; // Puedes probar también #f8f8f8 o #fefefe
+  border-radius: 14px;
+  box-shadow: 0 6px 16px rgba(255, 255, 255, 0.08);
+  padding: 0.5rem 1rem;
+  margin-bottom: 2rem;
+  transition: transform 0.2s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  }
+}
+
+.formulario-resena ion-item {
+  --background: #ffffff;         // Fondo blanco o claro
+  --color: #111;                 // Color del texto
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.titulo-resena {
+  color: #231f1f; /* rojo oscuro */
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}

@@ -1,5 +1,5 @@
 .fondo-gris {
-  --background: #f2f2f2; /* gris claro */
+  --background: #e8dfdf; /* gris claro */
 }
 
 .titulo-rojo {
@@ -11,4 +11,72 @@
   color: red;
   font-weight: bold;
   text-align: center;
+}
+
+.fondo-gris {
+  background-color: #f4f4f4;
+}
+
+.titulo-rojo {
+  color: #c0392b;
+  font-weight: bold;
+  font-size: 1.6rem;
+}
+
+.imagen-ajustada {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.pelicula-card {
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  border-radius: 10px;
+}
+
+.mensaje-vacio {
+  font-style: italic;
+  color: #888;
+  font-size: 1rem;
+  margin-top: 1rem;
+}
+.fondo-gris {
+  background-color: #f8f9fa;
+}
+
+.titulo-rojo {
+  color: #e74c3c;
+  font-size: 1.6rem;
+  font-weight: bold;
+}
+
+.card-mi-lista {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.imagen-buscador {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+}
+
+.descripcion-corta {
+  font-size: 0.9rem;
+  color: #444;
+  margin-bottom: 0.5rem;
+}
+
+.mensaje-vacio {
+  color: #777;
+  font-style: italic;
+  margin-top: 0.5rem;
+}
+
+.vacio-container {
+  text-align: center;
+  margin-top: 3rem;
 }

@@ -1,50 +1,59 @@
 <ion-content class="ion-padding" fullscreen>
-
-  <ion-card>
+  <!-- Formulario para publicar reseña -->
+  <ion-card class="formulario-resena">
     <ion-card-header>
-      <ion-card-title>Publicar nueva reseña</ion-card-title>
+      <ion-card-title class="titulo-resena">🎬 Publicar nueva reseña</ion-card-title>
     </ion-card-header>
     <ion-card-content>
       <form (ngSubmit)="publicarResena()">
         <ion-item>
-          <ion-label position="floating">Título</ion-label>
+          <ion-label position="floating">🎬 Título</ion-label>
           <ion-input [(ngModel)]="nuevaResena.titulo" name="titulo" required></ion-input>
         </ion-item>
 
         <ion-item>
-          <ion-label position="floating">Género</ion-label>
+          <ion-label position="floating">🎭 Género</ion-label>
           <ion-input [(ngModel)]="nuevaResena.genero" name="genero" required></ion-input>
         </ion-item>
 
         <ion-item>
-          <ion-label position="floating">Duración (min)</ion-label>
+          <ion-label position="floating">⏱️ Duración (min)</ion-label>
           <ion-input type="number" [(ngModel)]="nuevaResena.duracion" name="duracion" required></ion-input>
         </ion-item>
 
-        <ion-item>
-          <ion-label>Calificación</ion-label>
-          <ion-buttons slot="end">
-            <ion-button *ngFor="let s of [1,2,3,4,5]" fill="clear" size="small" (click)="seleccionarEstrellas(s)">
+        <!-- Calificación de 10 estrellas -->
+        <ion-item lines="none">
+          <ion-label>⭐ Calificación</ion-label>
+          <ion-buttons slot="end" class="estrellas">
+            <ion-button
+              *ngFor="let s of [1,2,3,4,5,6,7,8,9,10]"
+              fill="clear"
+              size="small"
+              (click)="seleccionarEstrellas(s)"
+            >
               <ion-icon
                 [name]="nuevaResena.puntuacion >= s ? 'star' : 'star-outline'"
-                color="warning">
-              </ion-icon>
+                color="warning"
+              ></ion-icon>
             </ion-button>
           </ion-buttons>
         </ion-item>
 
         <ion-item>
-          <ion-label position="floating">Descripción</ion-label>
+          <ion-label position="floating">🗒️ Descripción</ion-label>
           <ion-textarea [(ngModel)]="nuevaResena.descripcion" name="descripcion" required></ion-textarea>
         </ion-item>
 
-        <ion-button expand="block" type="submit" color="danger" class="ion-margin-top">Publicar</ion-button>
+        <ion-button expand="block" type="submit" color="danger" class="ion-margin-top">
+          Publicar reseña
+        </ion-button>
       </form>
     </ion-card-content>
   </ion-card>
 
+  <!-- Lista de reseñas -->
   <div class="reseñas-container">
-    <h2 class="titulo-principal">Últimas Reseñas</h2>
+    <h2 class="titulo-principal">🧾 Últimas Reseñas</h2>
 
     <ng-container *ngIf="resenas.length > 0; else sinResenas">
       <div class="tarjeta-reseña" *ngFor="let resena of resenas">
@@ -55,20 +64,22 @@
             <p class="genero-tiempo">{{ resena.genero }} · {{ resena.duracion }} min</p>
           </div>
           <div class="puntuacion">
-            <span class="estrellas">{{ resena.estrellas }}</span>
-            <span class="valor">{{ resena.puntuacion }}/5</span>
+            <ion-icon name="star" color="warning"></ion-icon>
+            <span class="valor">{{ resena.puntuacion }}/10</span>
           </div>
         </div>
 
         <p class="descripcion">{{ resena.descripcion }}</p>
 
         <div class="etiquetas">
-          <span class="chip" *ngFor="let etiqueta of resena.etiquetas">{{ etiqueta }}</span>
+          <ion-chip *ngFor="let etiqueta of resena.etiquetas">
+            <ion-label>{{ etiqueta }}</ion-label>
+          </ion-chip>
         </div>
 
         <div class="autor">
           <div class="avatar">{{ resena.autorIniciales }}</div>
-          <div class="detalle-autor">Por {{ resena.autor }} - {{ resena.fecha }}</div>
+          <div class="detalle-autor">Por {{ resena.autor }} – {{ resena.fecha }}</div>
         </div>
       </div>
     </ng-container>
@@ -76,8 +87,5 @@
     <ng-template #sinResenas>
       <p class="ion-text-center" style="margin-top: 20px;">😕 No hay reseñas aún.</p>
     </ng-template>
-
-    
   </div>
-
 </ion-content>
