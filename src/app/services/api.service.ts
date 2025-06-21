@@ -16,6 +16,12 @@ export class ApiService {
     const url = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&language=es-ES&query=${encodeURIComponent(query)}`;
     return this.http.get(url);
   }
+  // Buscar series por nombre
+  buscarSeries(query: string) {
+    const apiKey = '9005097481cb5f13eb77846bbd00df11';
+    const url = `https://api.themoviedb.org/3/search/tv?api_key=${apiKey}&language=es-ES&query=${encodeURIComponent(query)}`;
+    return this.http.get(url);
+  }
 
   // Obtener la lista del usuario
   getLista(usuarioId: number): Observable<any> {

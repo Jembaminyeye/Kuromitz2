@@ -103,6 +103,26 @@ terror = [
   },
 ];
 
+busqueda: string = '';
+resultadosBusqueda: any[] = [];
+
+buscarSeries() {
+  if (!this.busqueda.trim()) {
+    this.resultadosBusqueda = [];
+    return;
+  }
+  this.apiService.buscarSeries(this.busqueda).subscribe({
+    next: (data: any) => {
+      this.resultadosBusqueda = data.results;
+    },
+    error: err => {
+      console.error("Error buscando series:", err);
+      this.resultadosBusqueda = [];
+    }
+  });
+}
+
+
   async agregarAMiLista(serie: any) {
     const usuarioId = Number(localStorage.getItem('usuarioId'));
     const serieParaEnviar = {

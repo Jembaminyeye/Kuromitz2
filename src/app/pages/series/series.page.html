@@ -1,4 +1,29 @@
 <ion-content>
+  <!-- Buscador de series externas -->
+<ion-item>
+  <ion-input [(ngModel)]="busqueda" placeholder="Buscar series..." (ionChange)="buscarSeries()"></ion-input>
+</ion-item>
+
+<div *ngIf="resultadosBusqueda.length">
+  <h2>Resultados de búsqueda</h2>
+  <ion-card *ngFor="let serie of resultadosBusqueda">
+    <img *ngIf="serie.poster_path" [src]="'https://image.tmdb.org/t/p/w200' + serie.poster_path" alt="{{serie.name}}">
+    <ion-card-header>
+      <ion-card-title>{{ serie.name }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>{{ serie.overview }}</p>
+      <p *ngIf="serie.vote_average">⭐ Calificación: {{ serie.vote_average }}</p>
+      <ion-button color="primary" (click)="agregarAMiLista({
+        titulo: serie.name,
+        descripcion: serie.overview,
+        imagen: 'https://image.tmdb.org/t/p/w200' + serie.poster_path,
+        calificacion: serie.vote_average
+      })">Agregar a mi lista</ion-button>
+    </ion-card-content>
+  </ion-card>
+</div>
+
   <!-- Sección general de series -->
   <div class="series-section">
     <h2>📺 Series</h2>
