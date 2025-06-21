@@ -65,3 +65,13 @@
   cursor: pointer;
 }
 
+ ion-searchbar {
+  --color: #8B0000;               /* Color del texto que escribes */
+  --placeholder-color: #888888;  /* Color del texto del placeholder */
+  --icon-color: #8B0000;          /* Color del ícono de la lupa */
+  --background: #ffffff;          /* Fondo del campo de búsqueda */
+}
+
+ion-searchbar:focus-within {
+  --background: #fff5f5;
+}
