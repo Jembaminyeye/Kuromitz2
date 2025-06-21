@@ -16,14 +16,15 @@ export class LoginPage implements OnInit {
 
   ngOnInit() {}
 
- // login.page.ts
   login() {
     this.api.login(this.correo, this.contrasena).subscribe({
       next: (respuesta) => {
         alert('✅ Sesión iniciada con éxito');
         localStorage.setItem('usuario', respuesta.usuario);
-        localStorage.setItem('usuarioId', respuesta.id); // <-- Guarda el id
-        this.router.navigate(['/home']);
+        localStorage.setItem('usuarioId', respuesta.id);
+        this.router.navigate(['/home']).then(() => {
+          window.location.reload(); // Recarga la página después de navegar
+        });
       },
       error: (err) => {
         console.error('❌ Error en login:', err);

@@ -20,6 +20,8 @@ export class HeaderComponent implements OnInit {
   cerrarSesion(): void {
     localStorage.removeItem('usuario');
     localStorage.removeItem('usuarioId');
-    this.router.navigate(['/login']);
-}
+    this.router.navigate(['/login']).then(() => {
+      window.location.reload(); // Recarga la página después de cerrar sesión
+    });
+  }
 }

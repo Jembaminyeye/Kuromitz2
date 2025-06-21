@@ -45,9 +45,13 @@ export class MiListaPage {
   }
 
 
+  
   eliminar(id: number) {
     this.apiService.deletePelicula(id).subscribe({
-      next: () => this.cargarLista(id),
+      next: () => {
+        const usuarioId = Number(localStorage.getItem('usuarioId'));
+        this.cargarLista(usuarioId);
+      },
       error: err => alert("Error al eliminar")
     });
   }
