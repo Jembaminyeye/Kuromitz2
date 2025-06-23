@@ -1,5 +1,30 @@
 ion-toolbar.custom-toolbar {
     --background: #b10000; /* rojo personalizado */
     --color: #ffffff; /* texto blanco, opcional */
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
   }
   
+  @media (max-width: 600px) {
+    ion-toolbar.custom-toolbar {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 8px 0;
+    }
+    ion-buttons[slot="start"], ion-buttons[slot="end"] {
+      width: 100%;
+      justify-content: flex-start;
+      flex-wrap: wrap;
+    }
+    ion-buttons[slot="start"] ion-button,
+    ion-buttons[slot="end"] ion-button {
+      margin-bottom: 4px;
+      width: 100%;
+    }
+    ion-label {
+      width: 100%;
+      margin-bottom: 4px;
+    }
+  }
+

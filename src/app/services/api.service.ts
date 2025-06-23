@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -30,12 +30,16 @@ export class ApiService {
 
   // Agregar película a la lista
   addPelicula(data: any): Observable<any> {
-  return this.http.post(`${this.baseUrl}/mi-lista`, data);
-}
+    const token = localStorage.getItem('token');
+    const headers = token ? new HttpHeaders({ 'Authorization': 'Bearer ' + token }) : undefined;
+    return this.http.post(`${this.baseUrl}/mi-lista`, data, { headers });
+  }
 
   // Eliminar película de la lista
   deletePelicula(id: number): Observable<any> {
-    return this.http.delete(`${this.baseUrl}/mi-lista/${id}`);
+    const token = localStorage.getItem('token');
+    const headers = token ? new HttpHeaders({ 'Authorization': 'Bearer ' + token }) : undefined;
+    return this.http.delete(`${this.baseUrl}/mi-lista/${id}`, { headers });
   }
 
   // Registrar usuario

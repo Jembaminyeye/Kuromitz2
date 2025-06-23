@@ -1,7 +1,7 @@
 const express = require("express");
 const ruta = express.Router();
 const db = require("./db");
-const xss = require("xss");
+const xss = require("xss");const verificarToken = require('./auth');
 
 
 // Obtener todas las películas de la lista de un usuario
@@ -35,8 +35,9 @@ ruta.get("/:usuario_id", (req, res) => {
 });
 
 // Agregar película a la lista
-ruta.post("/", (req, res) => {
-  const usuario_id = parseInt(req.body.usuario_id);
+ruta.post("/", verificarToken, (req, res) => {
+  // Ahora req.usuario contiene los datos del usuario autenticado
+  const usuario_id = req.usuario.id;
   const titulo = xss(req.body.titulo);
   const descripcion = xss(req.body.descripcion || "");
   const imagen = xss(req.body.imagen || "");

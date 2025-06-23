@@ -3,6 +3,8 @@ const ruta = express.Router();
 const db = require("./db");
 const bcrypt = require('bcryptjs');
 const xss = require("xss");
+const jwt = require('jsonwebtoken');
+const JWT_SECRET = 'tu_clave_secreta'; // Usa variable de entorno en producción
 
 
 // Mostrar todos los usuarios
@@ -66,22 +68,29 @@ ruta.post("/registro", async (req, res) => {
 });
 
 // Login
-// Login
 ruta.post("/login", (req, res) => {
   const correo = xss(req.body.correo); 
-  const contrasenaIngresada = req.body.contraseña; // ✅ Aquí defines la contraseña ingresada
+  const contrasenaIngresada = req.body.contraseña;
 
   db.query("SELECT * FROM usuarios WHERE correo = ?", [correo], async (err, results) => {
     if (err) return res.status(500).json({ error: "Error en la base de datos" });
     if (results.length === 0) return res.status(401).json({ error: "Correo o contraseña incorrectos." });
 
     const usuario = results[0];
-    const valido = await bcrypt.compare(contrasenaIngresada, usuario.contraseña); // ✅ Aquí usas la variable correcta
+    const valido = await bcrypt.compare(contrasenaIngresada, usuario.contraseña);
 
     if (!valido) return res.status(401).json({ error: "Correo o contraseña incorrectos." });
 
+    // Generar token JWT
+    const token = jwt.sign(
+      { id: usuario.id, usuario: usuario.usuario, correo: usuario.correo },
+      JWT_SECRET,
+      { expiresIn: '2h' }
+    );
+
     res.status(200).json({
       mensaje: "Inicio de sesión exitoso",
+      token, // <-- Aquí va el token
       usuario: usuario.usuario,
       id: usuario.id
     });

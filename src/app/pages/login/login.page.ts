@@ -22,6 +22,7 @@ export class LoginPage implements OnInit {
         alert('✅ Sesión iniciada con éxito');
         localStorage.setItem('usuario', respuesta.usuario);
         localStorage.setItem('usuarioId', respuesta.id);
+        localStorage.setItem('token', respuesta.token); // <-- Guarda el token aquí
         this.router.navigate(['/home']).then(() => {
           window.location.reload(); // Recarga la página después de navegar
         });
