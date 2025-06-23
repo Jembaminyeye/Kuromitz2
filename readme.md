@@ -4,9 +4,7 @@
 
 Benjamin Rodriguez, Ignacio Layana, Javier Morales, Sebastián rojas y Sean Jamen
 
-# Entrega Parcial 2: Diseño y Estructura inicial
-
-### Objetivo: Definir el diseno de la aplicación y construir la estructura del frontend en Ionic+ Angular
+# Entrega 3: Final
 
 # Ejecución del proyecto
 
