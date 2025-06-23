@@ -17,64 +17,91 @@
     <h2 class="titulo">Crear cuenta</h2>
     <p class="subtitulo">Por favor completa todos los campos</p>
 
-    <ion-item>
-      <ion-label position="floating">Nombre de usuario</ion-label>
-      <ion-input type="text" required [(ngModel)]="usuario.nombre" name="nombre"></ion-input>
-    </ion-item>
+    <form #registroForm="ngForm" (ngSubmit)="registrar()">
+      <ion-item>
+        <ion-label position="floating">Nombre de usuario</ion-label>
+        <ion-input type="text" required [(ngModel)]="usuario.nombre" name="nombre" #nombreCtrl="ngModel"></ion-input>
+      </ion-item>
+      <div *ngIf="nombreCtrl.invalid && nombreCtrl.touched" class="error">
+        El nombre es obligatorio.
+      </div>
 
-    <ion-item>
-      <ion-label position="floating">RUT</ion-label>
-      <ion-input type="text" required [(ngModel)]="usuario.rut" name="rut"></ion-input>
-    </ion-item>
+      <ion-item>
+        <ion-label position="floating">RUT</ion-label>
+        <ion-input type="text" required [(ngModel)]="usuario.rut" name="rut" #rutCtrl="ngModel"></ion-input>
+      </ion-item>
+      <div *ngIf="rutCtrl.invalid && rutCtrl.touched" class="error">
+        El RUT es obligatorio.
+      </div>
 
-    <ion-item>
-      <ion-label position="floating">Correo Electrónico</ion-label>
-      <ion-input type="email" required [(ngModel)]="usuario.correo" name="correo"></ion-input>
-    </ion-item>
+      <ion-item>
+        <ion-label position="floating">Correo Electrónico</ion-label>
+        <ion-input type="email" required [(ngModel)]="usuario.correo" name="correo" #correoCtrl="ngModel"></ion-input>
+      </ion-item>
+      <div *ngIf="correoCtrl.invalid && correoCtrl.touched" class="error">
+        <span *ngIf="correoCtrl.errors?.['required']">El correo es obligatorio.</span>
+        <span *ngIf="correoCtrl.errors?.['email']">El correo no es válido.</span>
+      </div>
 
-    <ion-item>
-      <ion-label>Región</ion-label>
-      <ion-select placeholder="Selecciona una región" required [(ngModel)]="usuario.region" name="region">
-        <ion-select-option value="rm">Región Metropolitana</ion-select-option>
-        <ion-select-option value="valpo">Valparaíso</ion-select-option>
-        <ion-select-option value="bio">Biobío</ion-select-option>
-        <ion-select-option value="araucania">La Araucanía</ion-select-option>
-        <ion-select-option value="otras">Otras</ion-select-option>
-      </ion-select>
-    </ion-item>
+      <ion-item>
+        <ion-label>Región</ion-label>
+        <ion-select placeholder="Selecciona una región" required [(ngModel)]="usuario.region" name="region" #regionCtrl="ngModel">
+          <ion-select-option value="rm">Región Metropolitana</ion-select-option>
+          <ion-select-option value="valpo">Valparaíso</ion-select-option>
+          <ion-select-option value="bio">Biobío</ion-select-option>
+          <ion-select-option value="araucania">La Araucanía</ion-select-option>
+          <ion-select-option value="otras">Otras</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <div *ngIf="regionCtrl.invalid && regionCtrl.touched" class="error">
+        La región es obligatoria.
+      </div>
 
-    <ion-item>
-      <ion-label>Comuna</ion-label>
-      <ion-select placeholder="Selecciona una comuna" required [(ngModel)]="usuario.comuna" name="comuna">
-        <ion-select-option value="lc">Las Condes</ion-select-option>
-        <ion-select-option value="prov">Providencia</ion-select-option>
-        <ion-select-option value="scl">Santiago</ion-select-option>
-        <ion-select-option value="nunoa">Ñuñoa</ion-select-option>
-        <ion-select-option value="otras">Otras</ion-select-option>
-      </ion-select>
-    </ion-item>
+      <ion-item>
+        <ion-label>Comuna</ion-label>
+        <ion-select placeholder="Selecciona una comuna" required [(ngModel)]="usuario.comuna" name="comuna" #comunaCtrl="ngModel">
+          <ion-select-option value="lc">Las Condes</ion-select-option>
+          <ion-select-option value="prov">Providencia</ion-select-option>
+          <ion-select-option value="scl">Santiago</ion-select-option>
+          <ion-select-option value="nunoa">Ñuñoa</ion-select-option>
+          <ion-select-option value="otras">Otras</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <div *ngIf="comunaCtrl.invalid && comunaCtrl.touched" class="error">
+        La comuna es obligatoria.
+      </div>
 
-    <ion-item>
-      <ion-label position="floating">Contraseña</ion-label>
-      <ion-input type="password" required [(ngModel)]="usuario.contrasena" name="contrasena"></ion-input>
-    </ion-item>
+      <ion-item>
+        <ion-label position="floating">Contraseña</ion-label>
+        <ion-input type="password" required [(ngModel)]="usuario.contrasena" name="contrasena" #contrasenaCtrl="ngModel"></ion-input>
+      </ion-item>
+      <div *ngIf="contrasenaCtrl.invalid && contrasenaCtrl.touched" class="error">
+        La contraseña es obligatoria.
+      </div>
 
-    <ion-item>
-      <ion-label position="floating">Confirmar contraseña</ion-label>
-      <ion-input type="password" required [(ngModel)]="usuario.confirmarContrasena" name="confirmarContrasena"></ion-input>
-    </ion-item>
+      <ion-item>
+        <ion-label position="floating">Confirmar contraseña</ion-label>
+        <ion-input type="password" required [(ngModel)]="usuario.confirmarContrasena" name="confirmarContrasena" #confirmarContrasenaCtrl="ngModel"></ion-input>
+      </ion-item>
+      <div *ngIf="confirmarContrasenaCtrl.invalid && confirmarContrasenaCtrl.touched" class="error">
+        Debes confirmar la contraseña.
+      </div>
+      <div *ngIf="usuario.contrasena && usuario.confirmarContrasena && usuario.contrasena !== usuario.confirmarContrasena" class="error">
+        Las contraseñas no coinciden.
+      </div>
 
-    <ion-item lines="none">
-      <ion-checkbox slot="start" [(ngModel)]="usuario.aceptaTerminos"></ion-checkbox>
-      <ion-label>Acepto los <a href="#">términos y condiciones</a></ion-label>
-    </ion-item>
-    
+      <ion-item lines="none">
+        <ion-checkbox slot="start" [(ngModel)]="usuario.aceptaTerminos" name="aceptaTerminos" #terminosCtrl="ngModel"></ion-checkbox>
+        <ion-label>Acepto los <a href="#">términos y condiciones</a></ion-label>
+      </ion-item>
+      <div *ngIf="!usuario.aceptaTerminos && registroForm.submitted" class="error">
+        Debes aceptar los términos y condiciones.
+      </div>
 
-    <ion-button expand="block" color="danger" (click)="registrar()" class="ion-margin-top">
-      Registrarse
-    </ion-button>
-    
-
+      <ion-button expand="block" color="danger" type="submit" [disabled]="registroForm.invalid || usuario.contrasena !== usuario.confirmarContrasena" class="ion-margin-top">
+        Registrarse
+      </ion-button>
+    </form>
 
     <div class="ion-text-center ion-margin-top">
       ¿Ya tienes una cuenta? <a routerLink="/login">Inicia sesión</a>

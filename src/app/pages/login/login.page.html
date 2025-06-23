@@ -8,26 +8,42 @@
       ¿No tienes una cuenta? <a routerLink="/registro">Regístrate</a>
     </p>
 
-    <form>
+    <form #loginForm="ngForm" (ngSubmit)="login()">
       <div class="form-group">
         <label class="form-label">Correo electrónico</label>
-        <input type="email" class="form-control" [(ngModel)]="correo" name="correo" required>
+        <input
+          type="email"
+          class="form-control"
+          [(ngModel)]="correo"
+          name="correo"
+          required
+          email
+          #correoCtrl="ngModel"
+        >
+        <div *ngIf="correoCtrl.invalid && correoCtrl.touched" class="error">
+          <span *ngIf="correoCtrl.errors?.['required']">El correo es obligatorio.</span>
+          <span *ngIf="correoCtrl.errors?.['email']">El correo no es válido.</span>
+        </div>
       </div>
 
       <div class="form-group">
         <label class="form-label">Contraseña</label>
-        <input type="password" class="form-control" [(ngModel)]="contrasena" name="contrasena" required>
-      </div>
-
-      <div class="form-checkbox">
-        <div>
-          <input type="checkbox" id="remember">
-          <label for="remember">Recordarme</label>
+        <input
+          type="password"
+          class="form-control"
+          [(ngModel)]="contrasena"
+          name="contrasena"
+          required
+          #passCtrl="ngModel"
+        >
+        <div *ngIf="passCtrl.invalid && passCtrl.touched" class="error">
+          <span>La contraseña es obligatoria.</span>
         </div>
-        <a class="forgot-password">¿Olvidaste tu contraseña?</a>
       </div>
 
-      <button type="button" class="login-button" (click)="login()">INICIAR SESIÓN</button>
+      <button type="submit" class="login-button" [disabled]="loginForm.invalid">
+        INICIAR SESIÓN
+      </button>
     </form>
 
     <div class="separator">O continúa con</div>
